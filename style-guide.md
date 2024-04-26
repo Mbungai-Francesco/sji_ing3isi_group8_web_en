@@ -11,12 +11,10 @@
 - clear orange:#fa6544
 - text grey: #9ca3af
 - icon black: #131313
+- white2 : #F7f7f7
 
 
 ### Neutral
-
-- white2 : #F7f7f7
-
 ### active or hover
 - white3: #EAEAEA
 - orange2: #d12600

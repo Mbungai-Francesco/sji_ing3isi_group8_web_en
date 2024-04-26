@@ -1,0 +1,64 @@
+@mixin btns($bc,$br,$bw,$tc,$back,$hc,$hback)
+  border: $bw solid $bc
+  border-radius: $br
+  color: $tc
+  background-color: $back
+  cursor: pointer
+  transition: 0.3s ease
+  &:hover
+    background-color: $hback
+    color: $hc
+body
+  padding: 3em
+  display: flex
+  flex-direction: column
+header
+  display: flex
+  justify-content: space-between
+  h1
+    font-size: 2em
+    font-weight: 600    
+  .right
+    display: flex
+    align-items: center
+    p
+      opacity: .8
+    input
+      padding: .7em 1.5em
+      font-size: 1em
+      @include btns(var(--white),8px,0,var(--white),var(--orange),var(--white),var(--orange_hover))
+      margin-left: 1em
+main
+  width: fit-content
+  margin: auto
+  text-align: center
+  h1
+    font-size: 4em
+    margin-block: 0 .4em
+    span
+      background: linear-gradient(to right,var(--clear_orange),var(--orange))
+      -webkit-text-fill-color: transparent
+      -webkit-background-clip: text
+  p
+    font-size: 1.5em
+    font-weight: 300
+    opacity: .7
+    font-style: italic
+    margin-block: 0 1.3em
+  .create
+    border-radius: 4px
+    border: 3.5px solid black
+    border-block: 2px solid black
+    width: fit-content
+    margin: auto
+    input
+      position: relative
+      @include btns($bc: var(--white),$br: 5px,$bw: 1.3px,$tc: var(--white),$back: var(--black),$hc:  var(--white),$hback: var(--black))
+      font-size: 1.2em
+      font-weight: 400
+      padding: .6em .8em
+      bottom: 7px
+    input:hover
+      bottom: 0px
+
+      
