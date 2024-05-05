@@ -45,11 +45,55 @@ request.onsuccess = function(event) {
         };
     }
 
+    // Update a note in the database
+    function updateNote(id, updatedNote) {
+        const transaction = db.transaction(['notes'], 'readwrite');
+        const objectStore = transaction.objectStore('notes');
+        const request = objectStore.get(id);
+
+        request.onsuccess = function(event) {
+            const note = event.target.result;
+            if (note) {
+                const updatedObject = Object.assign({}, note, updatedNote);
+                const updateRequest = objectStore.put(updatedObject, id);
+
+                updateRequest.onsuccess = function(event) {
+                    console.log('Note updated in the database');
+                };
+
+                updateRequest.onerror = function(event) {
+                    console.error('Error updating note in the database');
+                };
+            } else {
+                console.error('Note not found in the database');
+            }
+        };
+
+        request.onerror = function(event) {
+            console.error('Error retrieving note from the database');
+        };
+    }
+
+    // Delete a note from the database
+    function deleteNote(id) {
+        const transaction = db.transaction(['notes'], 'readwrite');
+        const objectStore = transaction.objectStore('notes');
+        const request = objectStore.delete(id);
+
+        request.onsuccess = function(event) {
+            console.log('Note deleted from the database');
+        };
+
+        request.onerror = function(event) {
+            console.error('Error deleting note from the database');
+        };
+    }
+
     // Usage example
     const note = {
         title: 'My First Note',
         description: 'This is a sample note',
-        tags: ['tag1', 'tag2', 'tag3']
+        tags: ['important', 'casual', 'hobby']
     };
 
     addNote(note);

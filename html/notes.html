@@ -74,7 +74,29 @@
       <h2>Hello, <span>Mbungai Francesco</span></h2>
       <p>What are you writing today?</p>
     </div>
+    <form id="noteForm">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags:</label>
+        <select id="tags" name="tags" multiple required>
+          <option value="important">Important</option>
+          <option value="casual">Casual</option>
+          <option value="hobby">Hobby</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+    </form>
   </main>
+  <footer>
+  </footer>
+  <script src="../app.js"></script>
 </body>
 
 </html>
