@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../style/css/notes.css">
 </head>
 
-<body id="body">
+<body>
   <div id="sideBar">
     <div id="sideBarTop">
       <div id="sideBar-header">
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div id="profile">
-      <p>Mbungai Francesco</p>
+      <p class="profile_name">Mbungai Francesco</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor"
         stroke-width="0" aria-hidden="true" data-jsxid="app/components/Sidebar.tsx:Sidebar:default:166,20"
         viewBox="0 0 24 24">
@@ -70,11 +70,30 @@
     </div>
   </div>
   <main>
-    <div id="mainTop">
-      <h2>Hello, <span>Mbungai Francesco</span></h2>
+    <header>
+      <h2>Hello, <span class="profile_name">Mbungai Francesco</span></h2>
       <p>What are you writing today?</p>
+    </header>
+    <div id="mainTop">
+      <div id="search">
+        <input type="text" name="" id="" placeholder="Search notes">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor" stroke-width="0" data-jsxid="app/(home)/notes/page.tsx:Notes:default:236,16" viewBox="0 0 24 24"><path stroke="none" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"/></svg>
+      </div>
+      <div id="mainTop_right">
+        <div id="filter">
+          <p>filter <select name="" id="">
+            <option value="Name">Name</option>
+            <option value="Tag">Tag</option>
+          </select></p>
+        </div>
+        <div id="svgs">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true" data-jsxid="app/(home)/notes/page.tsx:Notes:default:246,16" viewBox="0 0 20 20"><path fill-rule="evenodd" stroke="none" d="M2.24 6.8a.75.75 0 0 0 1.06-.04l1.95-2.1v8.59a.75.75 0 0 0 1.5 0V4.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0L2.2 5.74a.75.75 0 0 0 .04 1.06zm8 6.4a.75.75 0 0 0-.04 1.06l3.25 3.5a.75.75 0 0 0 1.1 0l3.25-3.5a.75.75 0 1 0-1.1-1.02l-1.95 2.1V6.75a.75.75 0 0 0-1.5 0v8.59l-1.95-2.1a.75.75 0 0 0-1.06-.04z" clip-rule="evenodd"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor" stroke-width="0" data-jsxid="app/(home)/notes/page.tsx:Notes:default:268,39" viewBox="0 0 16 16"><path stroke="none" d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/></svg>
+        </div>
+      </div>
     </div>
   </main>
+  <!-- <script src="../app.js"></script> -->
 </body>
 
 </html>

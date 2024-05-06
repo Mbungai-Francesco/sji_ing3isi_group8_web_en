@@ -2,4 +2,60 @@
   background-color: var(--white_hover);
 }
 
+#mainTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 2em 0;
+}
+#mainTop #search {
+  position: relative;
+  min-width: 18em;
+  display: flex;
+  align-items: center;
+}
+#mainTop #search input {
+  border: 0;
+  padding: 0.8em;
+  padding-inline: 1em;
+  width: 100%;
+  background-color: var(--white2);
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+#mainTop #search input::placeholder {
+  color: var(--text_grey);
+}
+#mainTop #search svg {
+  fill: var(--orange);
+  width: 1.3em;
+  height: 1.3em;
+  position: absolute;
+  right: 0.5em;
+}
+#mainTop #mainTop_right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#mainTop #mainTop_right #filter select {
+  border: 0;
+  border-left: 1px solid var(--black);
+}
+#mainTop #mainTop_right #svgs {
+  margin-inline: 1em 0;
+}
+#mainTop #mainTop_right #svgs svg {
+  width: 2.9em;
+  height: 2.5em;
+  padding: 0.7em;
+  background-color: var(--white_hover);
+  fill: var(--orange);
+  border-radius: 5px;
+}
+#mainTop #mainTop_right #svgs svg:nth-child(2) {
+  margin-inline: 0.5em 0;
+}
+
 /*# sourceMappingURL=notes.css.map */
