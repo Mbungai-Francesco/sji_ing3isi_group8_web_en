@@ -12,9 +12,28 @@
 .block_mainBody {
   display: block;
   height: 78vh;
+  overflow-y: scroll;
 }
 .block_mainBody .notes {
   width: 100%;
+}
+
+#mainBody .notes .notesBottom .details .tags .tag {
+  width: 1em;
+  aspect-ratio: 1/1;
+  background-color: red;
+  border-radius: 50%;
+  margin-inline: 0 0.5em;
+}
+#mainBody .notes .notesBottom .details .tags .tag:nth-child(2) {
+  background-color: green;
+}
+#mainBody .notes .notesBottom .details .tags .tag:nth-child(3) {
+  background-color: yellow;
+}
+
+.hidden {
+  display: none;
 }
 
 #pages .page:nth-child(2) {
@@ -95,11 +114,11 @@
 #mainBody {
   width: 100%;
   margin-block: 2em 0;
-  overflow-y: scroll;
   padding-block: 1em;
   padding-inline: 0 0.5em;
 }
 #mainBody .notes {
+  position: relative;
   background-color: var(--white2);
   padding-block: 0.5em 1em;
   padding-inline: 1em;
@@ -126,23 +145,11 @@
   display: flex;
   margin-block: 0.5em 0;
 }
-#mainBody .notes .notesBottom .details .tags .tag {
-  width: 1em;
-  aspect-ratio: 1/1;
-  background-color: red;
-  border-radius: 50%;
-  margin-inline: 0 0.5em;
-}
-#mainBody .notes .notesBottom .details .tags .tag:nth-child(2) {
-  background-color: green;
-}
-#mainBody .notes .notesBottom .details .tags .tag:nth-child(3) {
-  background-color: yellow;
-}
 #mainBody .notes .notesBottom .dots {
   display: flex;
   align-items: center;
   align-self: flex-end;
+  padding: 0.3em;
 }
 #mainBody .notes .notesBottom .dots .dot {
   width: 0.2em;
@@ -150,6 +157,34 @@
   background-color: var(--dots_grey);
   border-radius: 50%;
   margin-inline: 1px;
+}
+#mainBody .notes .note_option {
+  background-color: var(--white);
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  position: absolute;
+  z-index: 2;
+  right: 1em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
+}
+#mainBody .notes .note_option div {
+  border-radius: 5px;
+  padding-block: 0.6em;
+  font-size: 1.05em;
+  font-weight: 400;
+  margin-block: 0.5em;
+  padding-inline: 0.7em;
+  cursor: pointer;
+}
+#mainBody .notes .note_option div:hover {
+  background-color: var(--white_hover);
+}
+#mainBody .notes .note_option .ren {
+  color: var(--dots_grey);
+}
+#mainBody .notes .note_option .del {
+  color: red;
 }
 
 /*# sourceMappingURL=notes.css.map */

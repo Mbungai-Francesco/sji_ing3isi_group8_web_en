@@ -74,6 +74,47 @@ body{
   margin-inline: 0 1em;
   width: 1.2em;
 }
+#tagsKey .tags::-webkit-scrollbar {
+  width: 0.45em;
+}
+#tagsKey .tags::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 20px;
+}
+#tagsKey .tags::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom,var(--clear_orange),var(--orange_hover));
+  border-radius: 20px;
+  border: 2px solid var(--primary-color);
+}
+#tagsKey h3{
+  font-weight: 500;
+}
+#tagsKey .tags{
+  display: flex;
+  flex-direction: column;
+  margin-block: .7em 0;
+  max-height: 25vh;
+  overflow-y: scroll;
+}
+#tagsKey .tags .key{
+  padding: 0 .8em;
+  padding-block: 0 .4em;
+  display: flex;
+}
+#tagsKey .tags .key .tag{
+  width: 1em;
+  aspect-ratio: 1/1;
+  background-color: red;
+  border-radius: 50%;
+  margin-inline: 0 .5em;
+  margin-block: 0 .5em;
+}
+#tagsKey .tags .key:nth-child(2) .tag{
+  background-color: green;
+}
+#tagsKey .tags .key:nth-child(3) .tag{
+  background-color: yellow;
+}
 #profile{
   background-color: var(--white_hover);
   justify-content: space-between;
