@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myMEMORY | Dashboard</title>
+  <title>Trash</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../style/css/notes.css">
+  <!-- <link rel="stylesheet" href="../style/css/notes.css"> -->
+
+  <script src="../index.js" defer></script>
 </head>
 
 <body id="body">
@@ -57,9 +59,26 @@
           <p>Settings</p>
         </div>
       </div>
+      <div id="tagsKey">
+        <h3>Tags</h3>
+        <div class="tags">
+          <div class="key">
+            <div class="tag"></div>
+            <p>Important</p>
+          </div>
+          <div class="key">
+            <div class="tag"></div>
+            <p>Casual</p>
+          </div>
+          <div class="key">
+            <div class="tag"></div>
+            <p>Daily</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="profile">
-      <p>Mbungai Francesco</p>
+      <p class="profile_name">Mbungai Francesco</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor"
         stroke-width="0" aria-hidden="true" data-jsxid="app/components/Sidebar.tsx:Sidebar:default:166,20"
         viewBox="0 0 24 24">
@@ -70,11 +89,14 @@
     </div>
   </div>
   <main>
-    <div id="mainTop">
-      <h2>Hello, <span>Mbungai Francesco</span></h2>
+    <header>
+      <h2>Hello, <span class="profile_name">Mbungai Francesco</span></h2>
       <p>What are you writing today?</p>
+    </header>
+    <div id="mainTop">
     </div>
   </main>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
 </body>
 
 </html>

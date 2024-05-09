@@ -7,6 +7,13 @@
   <title>myMEMORY | Dashboard</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../style/css/notes.css">
+
+  <!-- Please Allabira precisely.. leaves this js links here iif you don't
+    want the code to crash 😭😭😭 I had no choice this time
+   -->
+  <script src="../js/data.js"></script>
+  <script src="../js/notes.js" defer></script>
+  <script src="../index.js" defer></script>
 </head>
 
 <body>
@@ -110,7 +117,7 @@
       </div>
     </div>
     <div id="mainBody" class="grid_mainBody">
-      <div class="notes">
+      <div class="notes" val="">
         <h1 class="title">Star</h1>
         <div class="notesBottom">
           <div class="details">
@@ -134,120 +141,25 @@
           </div>
         </div>
       </div>
-      <div class="notes">
-        <h1 class="title">Moon</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <p class="date">12th May 2020</p>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-          <div class="ren"><p>Rename</p></div>
-          <div class="del"><p>Delete</p></div>
-        </div>
-        </div>
-      </div>
-      <div class="notes">
-        <h1 class="title">Movies</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <p class="date">12th May 2020</p>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-          <div class="ren"><p>Rename</p></div>
-          <div class="del"><p>Delete</p></div>
-        </div>
-        </div>
-      </div>
-      <div class="notes">
-        <h1 class="title">LookUp</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <p class="date">12th May 2020</p>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-          <div class="ren"><p>Rename</p></div>
-          <div class="del"><p>Delete</p></div>
-        </div>
-        </div>
-      </div>
-      <div class="notes">
-        <h1 class="title">Seminar</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <p class="date">12th May 2020</p>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-          <div class="ren"><p>Rename</p></div>
-          <div class="del"><p>Delete</p></div>
-        </div>
-        </div>
-      </div>
-      <div class="notes">
-        <h1 class="title">Star</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <p class="date">12th May 2020</p>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-          <div class="ren"><p>Rename</p></div>
-          <div class="del"><p>Delete</p></div>
-        </div>
-        </div>
-      </div>
     </div>
   </main>
+  <div id="rename">
+    <p>Rename note title</p>
+    <input type="text">
+    <div id="renameBtn">
+      <button id="renCancel">Cancel</button>
+      <button id="renUpdate">Update</button>
+    </div>
+  </div>
+  <div id="delete">
+    <p>Are you sure you want to delete <br> '<span>moon</span>'</p>
+    <div id="deleteBtn">
+      <button id="delCancel">Cancel</button>
+      <button id="delDelete">Delete</button>
+    </div>
+  </div>
+  <div id="overlay"></div>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="../js/notes.js"></script>
   <!-- <script src="../app.js"></script> -->
 </body>
 

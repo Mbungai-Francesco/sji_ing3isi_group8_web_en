@@ -1,0 +1,36 @@
+{
+	"Notes": [
+		{
+			"id": 1,
+			"title": "Meeting with team",
+			"date": "2022-03-01",
+			"time": "10:00",
+			"description": "Discuss project status",
+      "tags": ["red", "green"]
+		},
+		{
+			"id": 2,
+			"title": "Doctor's appointment",
+			"date": "2022-03-02",
+			"time": "14:30",
+			"description": "Annual check-up",
+      "tags": ["red", "yellow"]
+		},
+		{
+			"id": 3,
+			"title": "Grocery shopping",
+			"date": "2022-03-03",
+			"time": "16:00",
+			"description": "Buy fruits, vegetables, and bread",
+      "tags" : ["green", "yellow","red"]
+		},
+		{
+			"id": 3,
+			"title": "Grocery shopping",
+			"date": "2022-03-03",
+			"time": "16:00",
+			"description": "Buy fruits, vegetables, and bread",
+      "tags" : ["green", "yellow","red"]
+		}
+	]
+}
