@@ -21,4 +21,21 @@
 
 }
 
+.info-box {
+  position: fixed;  
+  top: 150px;  
+  right: 20px;  
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  
+  width: 250px;  
+}
+
+/* .box {
+position: fixed;
+background: orange;
+
+} */
+
 
