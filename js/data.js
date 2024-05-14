@@ -1,4 +1,22 @@
 var Notes = [];
+
+const sortNotes = function (notes) {
+  for (let i = 0; i < (notes.length -1); i++) {
+    let min = i
+    for (let j = i + 1; j < notes.length; j++) {
+      if (notes[j].title < notes[min].title) {
+        min = j;
+      }
+    }
+    if(min != i){
+      let temp = notes[min]
+      notes[min] = notes[i]
+      notes[i] = temp
+     }
+  }
+  return notes
+}
+
 var newNote = function (id,title, date, time, tags){
   var tag = ''
   for (const color of tags) {
@@ -39,6 +57,7 @@ const goGetNotes = function () {
     if (this.readyState == 4) {
       var response = JSON.parse(xhttp.responseText);
       Notes = response.Notes
+      Notes = sortNotes(Notes)
       console.log(Notes);
     }
   };

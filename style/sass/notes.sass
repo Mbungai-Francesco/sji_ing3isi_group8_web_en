@@ -6,18 +6,27 @@
   row-gap: 0
   .notes
     height: fit-content
+    direction: ltr
+  &.reverse
+    direction: rtl
+    .notes
+      direction: ltr
 .block_mainBody
-  display: block
+  display: flex
+  flex-direction: column
   height: 78vh
   overflow-y: scroll
   .notes
     width: 100%
+  &.reverse
+    justify-content: flex-end
+    flex-direction: column-reverse
 
 %tag
   width: 1em
-  aspect-ratio: 1/1
+  height: 1em
   background-color: red
-  border-radius: 50%
+  // border-radius: 50%
   margin-inline: 0 .5em
   &.tag:nth-child(2)
     background-color: green
@@ -190,6 +199,35 @@
       .del
         color: red
         // padding-inline: .5em 
+
+#createNoteForm
+  @extend %popForms
+  // display: block
+  input
+    width: 100%
+    padding-block: .5em
+    padding-inline: .5em
+  textarea
+    width: 100%
+    margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .5em
+    padding-inline: .5em
+    font-size: 1em
+    resize: none
+  .forTags
+    .tags
+      display: flex
+      flex-wrap: nowrap
+      width: 10em
+      border: 1px solid red
+      overflow-x: scroll
+      height: fit-content
+      .tag
+        // display: inline-block
+        @extend %tag
+
 #rename
   @extend %popForms
   input 

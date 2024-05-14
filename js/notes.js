@@ -12,22 +12,23 @@ var del = $("#delete");
 var delCancel = $("#delCancel");
 var overlay = $("#overlay");
 var currentlyUpdating;
+var createNote = $("#createNote");
 
-const getAll = function (){
-  body = $("body");
-  mainBody = $("#mainBody");
-  switcher = $("#svgs svg");
-  notes = $(".notes");
-  dots = $(".notes .dots");
-  notes_opt = $(".notes .note_option");
-  notes_opt_ren = $(".notes .note_option div");
-  rename = $("#rename");
-  renameCancel = $("#renCancel");
-  renameUpdate = $("#renUpdate");
-  del = $("#delete");
-  delCancel = $("#delCancel");
-  overlay = $("#overlay");
-}
+// const getAll = function (){
+//   body = $("body");
+//   mainBody = $("#mainBody");
+//   switcher = $("#svgs svg");
+//   notes = $(".notes");
+//   dots = $(".notes .dots");
+//   notes_opt = $(".notes .note_option");
+//   notes_opt_ren = $(".notes .note_option div");
+//   rename = $("#rename");
+//   renameCancel = $("#renCancel");
+//   renameUpdate = $("#renUpdate");
+//   del = $("#delete");
+//   delCancel = $("#delCancel");
+//   overlay = $("#overlay");
+// }
 
 console.log('At top');
 
@@ -44,7 +45,7 @@ const makeNotes = function (Notes) {
   for (const iterator of Notes) {
     mainBody.append(newNote(iterator.id,iterator.title, iterator.date, iterator.time, iterator.tags));  
   }
-  getAll()
+  // getAll()
 }
 
 makeNotes(Notes)
@@ -80,6 +81,10 @@ var noteOptionOnSite = function () {
 	}
 	return false;
 };
+
+switcher.eq(0).on("click", function () {
+	$("#mainBody").toggleClass("reverse");
+});
 
 switcher.eq(1).on("click", function () {
 	$("#mainBody").toggleClass("grid_mainBody");
@@ -151,3 +156,8 @@ renameUpdate.on("click", function () {
 	$(".working").removeClass("working");
 	closeForms(rename);
 });
+
+createNote.on("click", function () {
+	overlay.toggle("active");
+	$("#createNoteForm").toggle("active");
+})

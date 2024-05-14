@@ -1,6 +1,14 @@
 {
 	"Notes": [
 		{
+			"id": 3,
+			"title": "Grocery shopping",
+			"date": "2022-03-03",
+			"time": "16:00",
+			"description": "Buy fruits, vegetables, and bread",
+      "tags" : ["green", "yellow","red"]
+		},
+		{
 			"id": 1,
 			"title": "Meeting with team",
 			"date": "2022-03-01",
@@ -10,7 +18,7 @@
 		},
 		{
 			"id": 2,
-			"title": "Doctor's appointment",
+			"title": "Dentist's appointment",
 			"date": "2022-03-02",
 			"time": "14:30",
 			"description": "Annual check-up",
@@ -18,15 +26,7 @@
 		},
 		{
 			"id": 3,
-			"title": "Grocery shopping",
-			"date": "2022-03-03",
-			"time": "16:00",
-			"description": "Buy fruits, vegetables, and bread",
-      "tags" : ["green", "yellow","red"]
-		},
-		{
-			"id": 3,
-			"title": "Grocery shopping",
+			"title": "Apple shopping",
 			"date": "2022-03-03",
 			"time": "16:00",
 			"description": "Buy fruits, vegetables, and bread",

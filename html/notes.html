@@ -29,7 +29,7 @@
         </svg>
       </div>
       <div id="pages">
-        <div class="page">
+        <div class="page" id="createNote">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" stroke-width="0"
             data-jsxid="app/components/Sidebar.tsx:Sidebar:default:98,24" viewBox="0 0 512 512">
             <path stroke="none"
@@ -117,32 +117,31 @@
       </div>
     </div>
     <div id="mainBody" class="grid_mainBody">
-      <div class="notes" val="">
-        <h1 class="title">Star</h1>
-        <div class="notesBottom">
-          <div class="details">
-            <div class="date">
-              <p> <span class="day">12th May 2020</span> - <span class="time">2:59</span></p>
-            </div>
-            <div class="tags">
-              <div class="tag"></div>
-              <div class="tag"></div>
-              <div class="tag"></div>
-            </div>
-          </div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="note_option hidden">
-            <div class="ren"><p>Rename</p></div>
-            <div class="del"><p>Delete</p></div>
-          </div>
-        </div>
-      </div>
     </div>
   </main>
+  <div id="createNoteForm">
+    <label for="title">
+      <input type="text" placeholder="Title note">
+      <textarea name="description" id="" placeholder="Enter note"></textarea>
+    </label>
+    <div class="forTags">
+      <div class="tags">
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+        <div class="tag"></div>
+      </div>
+    </div>
+  </div>
   <div id="rename">
     <p>Rename note title</p>
     <input type="text">
