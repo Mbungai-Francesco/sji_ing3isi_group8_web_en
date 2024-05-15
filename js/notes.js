@@ -13,24 +13,30 @@ var delCancel = $("#delCancel");
 var overlay = $("#overlay");
 var currentlyUpdating;
 var createNote = $("#createNote");
+var filter = $("#filter");
+var categotyOptions = $(".options");
+var arr
 
-// const getAll = function (){
-//   body = $("body");
-//   mainBody = $("#mainBody");
-//   switcher = $("#svgs svg");
-//   notes = $(".notes");
-//   dots = $(".notes .dots");
-//   notes_opt = $(".notes .note_option");
-//   notes_opt_ren = $(".notes .note_option div");
-//   rename = $("#rename");
-//   renameCancel = $("#renCancel");
-//   renameUpdate = $("#renUpdate");
-//   del = $("#delete");
-//   delCancel = $("#delCancel");
-//   overlay = $("#overlay");
-// }
+const getAll = function (){
+  body = $("body");
+  mainBody = $("#mainBody");
+  switcher = $("#svgs svg");
+  notes = $(".notes");
+  dots = $(".notes .dots");
+  notes_opt = $(".notes .note_option");
+  notes_opt_ren = $(".notes .note_option div");
+  rename = $("#rename");
+  renameCancel = $("#renCancel");
+  renameUpdate = $("#renUpdate");
+  del = $("#delete");
+  delCancel = $("#delCancel");
+  overlay = $("#overlay");
+	createNote = $("#createNote");
+  filter = $("#filter");
+  categotyOptions = $(".options");
+}
 
-console.log('At top');
+// console.log('At top');
 
 function Note(id, title, date, time, description, tags) {
 	this.id = id;
@@ -43,14 +49,26 @@ function Note(id, title, date, time, description, tags) {
 
 const makeNotes = function (Notes) {
   for (const iterator of Notes) {
-    mainBody.append(newNote(iterator.id,iterator.title, iterator.date, iterator.time, iterator.tags));  
+    mainBody.append(newNote(iterator.id,iterator.title, iterator.date, iterator.time, iterator.tags, iterator.category));  
   }
-  // getAll()
+  // console.log(arr);
+	arr = [...catSet]
+	let i = 0
+  for (const cate of arr) {
+    categories += newCat(cate,i)
+		i++
+  } 
+	filter.children('#select').append(categories)
+	filter.innerWidth(filter.children('#select').innerWidth() + 16)
+	filter.children('#select').innerWidth(filter.innerWidth())
+	// categorySelect.parent().innerWidth(categorySelect.innerWidth() + 16)
+	// console.log(categotyOptions);
+  getAll()
 }
 
 makeNotes(Notes)
 
-console.log('At bottom');
+// console.log('At bottom');
 for (let i = 0; i < notes.length; i++) {
 	notes[i].setAttribute("val", i);
 }
@@ -74,6 +92,27 @@ function filterContacts(searchTerm) {
 	});
 }
 
+function filterByCat(searchTerm) {
+	$("#mainBody .notes").each(function () {
+		var opts = $(this).children(".selfTags").children('div')
+		console.log(opts);
+		for (const opt of opts) {
+			console.log($(opt));
+			var text = $(opt).children('p').text().toLowerCase();
+			console.log(text);
+			if(searchTerm == "categories"){
+				$(this).show();
+				return
+			}
+			else if (text.includes(searchTerm)) {
+				$(this).show();
+				return
+			}
+		}
+		$(this).hide();
+	});
+}
+
 var noteOptionOnSite = function () {
 	for (const iterator of notes_opt) {
 		if (iterator.classList.contains("hidden")) continue;
@@ -81,6 +120,43 @@ var noteOptionOnSite = function () {
 	}
 	return false;
 };
+
+const clickOnNote = function () {
+	categotyOptions.on('click', function () {
+		// console.log("am in");
+		// console.log($(this).attr('index'));
+		let temp = arr[$(this).attr('index')]
+		arr[$(this).attr('index')] = arr[0]
+		arr[0] = temp
+	
+		// console.log(arr);
+	
+		let i = 0
+		categories = ""
+		for (const cate of arr) {
+			categories += newCat(cate,i)
+			i++
+		}
+		console.log($(this).children('p').text().toLowerCase());
+		var searchTerm = $(this).children('p').text().toLowerCase();
+		filterByCat(searchTerm);
+		// console.log($(this));
+		filter.children('#select').children('.options').remove()
+		filter.children('#select').append(categories)
+		
+		categotyOptions = $(".options");
+		// console.log(categotyOptions);
+		clickOnNote()
+	})
+}
+
+clickOnNote()
+
+filter.on('click', function () {
+	// console.log($(this).children('#select').children('.options'));
+	// console.log(`categories: ${categories}`);
+	$(this).toggleClass('choosing');
+})
 
 switcher.eq(0).on("click", function () {
 	$("#mainBody").toggleClass("reverse");
@@ -125,7 +201,7 @@ body.on("click", function (e) {
 // });
 
 $("#searchIn").on("input", function () {
-	console.log($(this).val().toLowerCase());
+	// console.log($(this).val().toLowerCase());
 	var searchTerm = $(this).val().toLowerCase();
 	filterContacts(searchTerm);
 });
