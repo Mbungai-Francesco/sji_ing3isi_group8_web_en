@@ -15,7 +15,10 @@ var currentlyUpdating;
 var createNote = $("#createNote");
 var filter = $("#filter");
 var categotyOptions = $(".options");
-var arr
+var tagOptions = $("#createNoteForm select");
+var tagOptionstag = $("#createNoteForm .tags option");
+var newTags = $('.selectedTags')
+var arr, selectedTags = [[],'<p>Tags:</p>']
 
 const getAll = function (){
   body = $("body");
@@ -34,6 +37,9 @@ const getAll = function (){
 	createNote = $("#createNote");
   filter = $("#filter");
   categotyOptions = $(".options");
+	tagOptions = $("#createNoteForm select");
+	tagOptionstag = $("#createNoteForm .tags option");
+	newTags = $('.selectedTags')
 }
 
 // console.log('At top');
@@ -61,6 +67,12 @@ const makeNotes = function (Notes) {
 	filter.children('#select').append(categories)
 	filter.innerWidth(filter.children('#select').innerWidth() + 16)
 	filter.children('#select').innerWidth(filter.innerWidth())
+
+	// let j = 0
+  for (const cate of arrTag) {
+    tagSelect += newTagSelect(cate.name,cate.color)
+  } 
+	tagOptions.append(tagSelect)
 	// categorySelect.parent().innerWidth(categorySelect.innerWidth() + 16)
 	// console.log(categotyOptions);
   getAll()
@@ -100,7 +112,7 @@ function filterByCat(searchTerm) {
 			console.log($(opt));
 			var text = $(opt).children('p').text().toLowerCase();
 			console.log(text);
-			if(searchTerm == "categories"){
+			if(searchTerm == "all"){
 				$(this).show();
 				return
 			}
@@ -151,6 +163,22 @@ const clickOnNote = function () {
 }
 
 clickOnNote()
+
+const assignTags = function (array,col) {
+	var there = array.filter(element => element == col);
+	console.log(there);
+	if(there.length == 0){
+		selectedTags[0].push(col)
+		selectedTags[1] += newTag(col)
+		newTags.empty()
+		newTags.append(selectedTags[1])
+	}
+}
+
+tagOptions.on('change', function () {
+	console.log($(this).val());
+	assignTags(selectedTags[0],$(this).val())
+})
 
 filter.on('click', function () {
 	// console.log($(this).children('#select').children('.options'));

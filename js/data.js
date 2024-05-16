@@ -1,9 +1,11 @@
 var Notes = [];
 var categories = ""
+var tagSelect = ""
 let catSet = new Set()
-catSet.add('Categories')
-// console.log(catSet);
-
+catSet.add('All')
+let arrTag
+// let tagSet = new Set()
+// tagSet.add('Tags')
 
 const sortNotes = function (notes) {
   for (let i = 0; i < (notes.length -1); i++) {
@@ -27,7 +29,9 @@ var newNote = function (id,title, date, time, tags,cats){
   var cat = ''
   for (const color of tags) {
     tag += newTag(color)
+    // tagSet.add(color)
   }
+  // console.log(tagSet);
   for (const cate of cats) {
     catSet.add(cate)
     cat += newCat(cate)
@@ -68,14 +72,19 @@ var newCat = function (col,i){
   return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
 }
 
+var newTagSelect = function (nom,col){
+  return `<option value="${col.toLowerCase()}">${nom}</option>`
+}
+
 const goGetNotes = function () {
   var xhttp = new XMLHttpRequest();
   xhttp.onload = function () {
     if (this.readyState == 4) {
       var response = JSON.parse(xhttp.responseText);
       Notes = response.Notes
+      arrTag = response.Tags
       Notes = sortNotes(Notes)
-      // console.log(Notes);
+      // console.log(arrTag);
     }
   };
   xhttp.open("GET", "../js/data.json", true);

@@ -36,5 +36,19 @@
       "tags" : ["green", "yellow","red"],
 			"category": ["Home", "Shopping"]
 		}
+	],
+	"Tags" : [
+		{
+			"name": "Important",
+			"color": "red"
+		},
+		{
+			"name": "Casual",
+			"color": "green"
+		},
+		{
+			"name": "Daily",
+			"color": "yellow"
+		}
 	]
 }

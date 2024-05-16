@@ -37,17 +37,17 @@
   overflow-y: scroll;
 }
 
-#createNoteForm .forTags .tags .tag, #mainBody .notes .notesBottom .details .tags .tag {
+#createNoteForm .selectedTags .tag, #mainBody .notes .notesBottom .details .tags .tag {
   width: 1em;
   height: 1em;
   background-color: red;
   border-radius: 50%;
   margin-inline: 0 0.5em;
 }
-#createNoteForm .forTags .tags .tag:nth-child(2), #mainBody .notes .notesBottom .details .tags .tag:nth-child(2) {
+#createNoteForm .selectedTags .tag:nth-child(2), #mainBody .notes .notesBottom .details .tags .tag:nth-child(2) {
   background-color: green;
 }
-#createNoteForm .forTags .tags .tag:nth-child(3), #mainBody .notes .notesBottom .details .tags .tag:nth-child(3) {
+#createNoteForm .selectedTags .tag:nth-child(3), #mainBody .notes .notesBottom .details .tags .tag:nth-child(3) {
   background-color: yellow;
 }
 
@@ -285,6 +285,9 @@
   display: none;
 }
 
+#createNoteForm {
+  display: block;
+}
 #createNoteForm input {
   width: 100%;
   padding-block: 0.5em;
@@ -292,7 +295,6 @@
 }
 #createNoteForm textarea {
   width: 100%;
-  margin-block: 0 1.3em;
   border: 1px solid var(--text_grey);
   border-radius: 5px;
   padding-block: 0.5em;
@@ -300,14 +302,31 @@
   font-size: 1em;
   resize: none;
 }
-#createNoteForm .forTags .tags {
+#createNoteForm .selectedTags {
   display: flex;
-  flex-wrap: nowrap;
-  width: 10em;
-  border: 1px solid red;
-  overflow-x: scroll;
-  height: fit-content;
+  align-content: center;
+  flex-wrap: wrap;
 }
+#createNoteForm .selectedTags p {
+  margin: unset;
+}
+#createNoteForm .selectedTags .tag {
+  align-self: center;
+  margin-inline: 0.5em;
+}
+#createNoteForm .forTags {
+  text-align: left;
+}
+#createNoteForm .forTags .tags {
+  width: 10em;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  font-size: 1em;
+}
+#createNoteForm .forTags .tags option {
+  font-size: 1em;
+}
+
 #rename input {
   width: 100%;
   margin-block: 0 1.3em;

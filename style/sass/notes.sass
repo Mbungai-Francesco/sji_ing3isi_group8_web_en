@@ -239,31 +239,40 @@
 
 #createNoteForm
   @extend %popForms
-  // display: block
+  display: block
   input
     width: 100%
     padding-block: .5em
     padding-inline: .5em
   textarea
     width: 100%
-    margin-block: 0 1.3em
+    // margin-block: 0 1.3em
     border: 1px solid var(--text_grey)
     border-radius: 5px
     padding-block: .5em
     padding-inline: .5em
     font-size: 1em
     resize: none
+  .selectedTags
+    display: flex
+    align-content: center
+    flex-wrap: wrap
+    p
+      margin: unset
+    .tag
+      @extend %tag
+      align-self: center
+      margin-inline: .5em
   .forTags
+    text-align: left
     .tags
-      display: flex
-      flex-wrap: nowrap
       width: 10em
-      border: 1px solid red
-      overflow-x: scroll
-      height: fit-content
-      .tag
-        // display: inline-block
-        @extend %tag
+      padding-block: .5em
+      padding-inline: .5em
+      font-size: 1em
+      option
+        // background-color: red
+        font-size: 1em
 
 #rename
   @extend %popForms
