@@ -11,8 +11,13 @@
     <!-- Please Allabira precisely.. leaves this js links here iif you don't
       want the code to crash 😭😭😭 I had no choice this time
     -->
+    
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/moment/min/moment.min.js"></script>
+    
     <script src="../js/data.js"></script>
-    <script src="../js/notes.js" defer></script>
+    <script src="../js/notes.js"></script>
+    <script src="../app.js"></script>
     <script src="../index.js" defer></script>
   </head>
 
@@ -121,7 +126,7 @@
     <div id="createNoteForm">
       <label for="title">
         <input type="text" placeholder="Title note">
-        <textarea name="description" id="" placeholder="Enter note"></textarea>
+        <!-- <textarea name="description" id="" placeholder="Enter note"></textarea> -->
       </label>
       <div class="selectedTags">
         <p>Tags:</p>
@@ -129,6 +134,10 @@
       <div class="forTags">
         <select class="tags">
         </select>
+      </div>
+      <div id="createBtn">
+        <button id="cancel">Cancel</button>
+        <button id="create">Create</button>
       </div>
     </div>
     <div id="rename">
@@ -147,7 +156,6 @@
       </div>
     </div>
     <div id="overlay"></div>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <!-- <script src="../app.js"></script> -->
   </body>
 

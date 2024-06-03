@@ -71,12 +71,21 @@
   font-size: 1.2em;
   margin-bottom: 1em;
 }
+#delete input[type=text], #rename input[type=text], #createNoteForm input[type=text], #delete textarea, #rename textarea, #createNoteForm textarea, #delete .tags, #rename .tags, #createNoteForm .tags {
+  width: 100%;
+  margin-block: 0 1.3em;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.8em;
+  padding-inline: 1.6em;
+  font-size: 1em;
+}
 
-#delete #deleteBtn, #rename #renameBtn {
+#delete #deleteBtn, #rename #renameBtn, #createNoteForm #createBtn {
   display: flex;
   justify-content: space-between;
 }
-#delete #deleteBtn button, #rename #renameBtn button {
+#delete #deleteBtn button, #rename #renameBtn button, #createNoteForm #createBtn button {
   padding-block: 0.8em;
   padding-inline: 2.5em;
   border-radius: 5px;
@@ -84,11 +93,11 @@
   font-weight: 400;
   font-size: 1.1em;
 }
-#delete #deleteBtn button:nth-child(1), #rename #renameBtn button:nth-child(1) {
+#delete #deleteBtn button:nth-child(1), #rename #renameBtn button:nth-child(1), #createNoteForm #createBtn button:nth-child(1) {
   background-color: var(--grey_hover);
   border: 1px solid var(--text_grey);
 }
-#delete #deleteBtn button:nth-child(2), #rename #renameBtn button:nth-child(2) {
+#delete #deleteBtn button:nth-child(2), #rename #renameBtn button:nth-child(2), #createNoteForm #createBtn button:nth-child(2) {
   background-color: var(--orange);
   border: 0;
 }
@@ -288,13 +297,13 @@
 #createNoteForm {
   display: block;
 }
-#createNoteForm input {
-  width: 100%;
-  padding-block: 0.5em;
+#createNoteForm input[type=text] {
   padding-inline: 0.5em;
+  margin-block: 0 0.5em;
 }
 #createNoteForm textarea {
   width: 100%;
+  margin-block: 0 0.3em;
   border: 1px solid var(--text_grey);
   border-radius: 5px;
   padding-block: 0.5em;
@@ -306,6 +315,7 @@
   display: flex;
   align-content: center;
   flex-wrap: wrap;
+  margin-block: 0 0.5em;
 }
 #createNoteForm .selectedTags p {
   margin: unset;
@@ -316,24 +326,16 @@
 }
 #createNoteForm .forTags {
   text-align: left;
+  margin-block: 0 0.5em;
 }
 #createNoteForm .forTags .tags {
-  width: 10em;
+  width: 100%;
   padding-block: 0.5em;
   padding-inline: 0.5em;
   font-size: 1em;
+  margin-block: 0.5em;
 }
 #createNoteForm .forTags .tags option {
-  font-size: 1em;
-}
-
-#rename input {
-  width: 100%;
-  margin-block: 0 1.3em;
-  border: 1px solid var(--text_grey);
-  border-radius: 5px;
-  padding-block: 0.8em;
-  padding-inline: 1.6em;
   font-size: 1em;
 }
 #overlay {

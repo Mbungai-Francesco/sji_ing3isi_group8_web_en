@@ -76,19 +76,20 @@ var newTagSelect = function (nom,col){
   return `<option value="${col.toLowerCase()}">${nom}</option>`
 }
 
-const goGetNotes = function () {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onload = function () {
-    if (this.readyState == 4) {
-      var response = JSON.parse(xhttp.responseText);
-      Notes = response.Notes
-      arrTag = response.Tags
-      Notes = sortNotes(Notes)
-      // console.log(arrTag);
-    }
-  };
-  xhttp.open("GET", "../js/data.json", true);
-  xhttp.send();
-}
+// const goGetNotes = function () {
+//   var xhttp = new XMLHttpRequest();
+//   xhttp.onload = function () {
+//     if (this.readyState == 4) {
+//       var response = JSON.parse(xhttp.responseText);
+//       Notes = response.Notes
+//       arrTag = response.Tags
+//       Notes = sortNotes(Notes)
+//       console.log(Notes);
+//       // console.log(arrTag);
+//     }
+//   };
+//   xhttp.open("GET", "../js/data.json", true);
+//   xhttp.send();
+// }
 
-goGetNotes()
+// goGetNotes()

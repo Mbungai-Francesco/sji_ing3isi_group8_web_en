@@ -54,6 +54,14 @@
   p
     font-size: 1.2em
     margin-bottom: 1em
+  input[type = text], textarea, .tags
+    width: 100%
+    margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .8em
+    padding-inline: 1.6em
+    font-size: 1em
 
 %popFormsbtns
   display: flex
@@ -240,13 +248,12 @@
 #createNoteForm
   @extend %popForms
   display: block
-  input
-    width: 100%
-    padding-block: .5em
+  input[type = text]
     padding-inline: .5em
+    margin-block: 0 0.5em
   textarea
     width: 100%
-    // margin-block: 0 1.3em
+    margin-block: 0 0.3em
     border: 1px solid var(--text_grey)
     border-radius: 5px
     padding-block: .5em
@@ -257,6 +264,7 @@
     display: flex
     align-content: center
     flex-wrap: wrap
+    margin-block: 0 .5em
     p
       margin: unset
     .tag
@@ -265,25 +273,21 @@
       margin-inline: .5em
   .forTags
     text-align: left
+    margin-block: 0 .5em
     .tags
-      width: 10em
+      width: 100%
       padding-block: .5em
       padding-inline: .5em
       font-size: 1em
+      margin-block: .5em
       option
         // background-color: red
         font-size: 1em
+  #createBtn
+    @extend %popFormsbtns
 
 #rename
   @extend %popForms
-  input 
-    width: 100%
-    margin-block: 0 1.3em
-    border: 1px solid var(--text_grey)
-    border-radius: 5px
-    padding-block: .8em
-    padding-inline: 1.6em
-    font-size: 1em
   #renameBtn
     @extend %popFormsbtns
 

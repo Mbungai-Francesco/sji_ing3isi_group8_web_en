@@ -1,7 +1,6 @@
 {
 	"Notes": [
 		{
-			"id": 3,
 			"title": "Grocery shopping",
 			"date": "2022-03-03",
 			"time": "16:00",
@@ -10,7 +9,6 @@
 			"category": ["Home","Shopping"]	
 		},
 		{
-			"id": 1,
 			"title": "Meeting with team",
 			"date": "2022-03-01",
 			"time": "10:00",
@@ -19,7 +17,6 @@
 			"category": ["Work"]
 		},
 		{
-			"id": 2,
 			"title": "Dentist's appointment",
 			"date": "2022-03-02",
 			"time": "14:30",
@@ -28,7 +25,6 @@
 			"category": ["Health", "Personal"]
 		},
 		{
-			"id": 3,
 			"title": "Apple shopping",
 			"date": "2022-03-03",
 			"time": "16:00",
@@ -37,7 +33,7 @@
 			"category": ["Home", "Shopping"]
 		}
 	],
-	"Tags" : [
+	"Tags" : [ 
 		{
 			"name": "Important",
 			"color": "red"
