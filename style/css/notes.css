@@ -1,5 +1,353 @@
+.grid_mainBody {
+  display: grid;
+  grid-template-columns: 23% 23% 23% 23%;
+  justify-content: space-between;
+  height: fit-content;
+  row-gap: 0;
+}
+.grid_mainBody .notes {
+  height: fit-content;
+  direction: ltr;
+}
+.grid_mainBody.reverse {
+  direction: rtl;
+}
+.grid_mainBody.reverse .notes {
+  direction: ltr;
+}
+
+.block_mainBody {
+  display: flex;
+  flex-direction: column;
+  height: 78vh;
+  overflow-y: scroll;
+}
+.block_mainBody .notes {
+  width: 100%;
+}
+.block_mainBody.reverse {
+  justify-content: flex-end;
+  flex-direction: column-reverse;
+}
+
+.choosing {
+  overflow: unset !important;
+}
+.choosing #select {
+  overflow-y: scroll;
+}
+
+#createNoteForm .selectedTags .tag, #mainBody .notes .notesBottom .details .tags .tag {
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border-radius: 50%;
+  margin-inline: 0 0.5em;
+}
+#createNoteForm .selectedTags .tag:nth-child(2), #mainBody .notes .notesBottom .details .tags .tag:nth-child(2) {
+  background-color: green;
+}
+#createNoteForm .selectedTags .tag:nth-child(3), #mainBody .notes .notesBottom .details .tags .tag:nth-child(3) {
+  background-color: yellow;
+}
+
+#delete, #rename, #createNoteForm {
+  top: 35%;
+  left: 38%;
+  position: absolute;
+  text-align: center;
+  width: 25em;
+  background-color: var(--white);
+  padding: 2em 1.5em;
+  border-radius: 10px;
+  z-index: 4;
+  box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
+  display: none;
+}
+.active#delete, .active#rename, .active#createNoteForm {
+  display: block;
+}
+#delete p, #rename p, #createNoteForm p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+#delete #deleteBtn, #rename #renameBtn {
+  display: flex;
+  justify-content: space-between;
+}
+#delete #deleteBtn button, #rename #renameBtn button {
+  padding-block: 0.8em;
+  padding-inline: 2.5em;
+  border-radius: 5px;
+  color: var(--black);
+  font-weight: 400;
+  font-size: 1.1em;
+}
+#delete #deleteBtn button:nth-child(1), #rename #renameBtn button:nth-child(1) {
+  background-color: var(--grey_hover);
+  border: 1px solid var(--text_grey);
+}
+#delete #deleteBtn button:nth-child(2), #rename #renameBtn button:nth-child(2) {
+  background-color: var(--orange);
+  border: 0;
+}
+
+#mainTop #mainTop_right #filter #select, #mainTop #search input {
+  padding: 0.8em;
+  padding-inline: 1em;
+  width: 100%;
+  background-color: var(--white2);
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 400;
+  border: 0;
+}
+
+.hidden {
+  display: none;
+}
+
 #pages .page:nth-child(2) {
   background-color: var(--white_hover);
+}
+
+#mainTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 2em 0;
+}
+#mainTop #search {
+  position: relative;
+  min-width: 18em;
+  display: flex;
+  align-items: center;
+}
+#mainTop #search input::placeholder {
+  color: var(--text_grey);
+}
+#mainTop #search svg {
+  fill: var(--orange);
+  width: 1.3em;
+  height: 1.3em;
+  position: absolute;
+  right: 0.5em;
+}
+#mainTop #mainTop_right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#mainTop #mainTop_right #filter {
+  position: relative;
+  background-color: var(--white2);
+  width: 6em;
+  height: 2em;
+  overflow: hidden;
+  padding-right: 5em;
+  display: flex;
+  cursor: pointer;
+}
+#mainTop #mainTop_right #filter svg {
+  position: absolute;
+  z-index: 7;
+  right: 0;
+  align-self: center;
+}
+#mainTop #mainTop_right #filter #select {
+  width: fit-content;
+  height: 10em;
+  padding-block: unset;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  transition: 0.5s ease;
+}
+#mainTop #mainTop_right #filter #select .options {
+  font-size: 1em;
+  font-weight: 400;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+}
+#mainTop #mainTop_right #filter #select .options:hover {
+  background-color: var(--grey_hover);
+}
+#mainTop #mainTop_right #svgs {
+  margin-inline: 1em 0;
+}
+#mainTop #mainTop_right #svgs svg {
+  width: 2.9em;
+  height: 2.5em;
+  padding: 0.7em;
+  background-color: var(--white_hover);
+  fill: var(--orange);
+  border-radius: 5px;
+}
+#mainTop #mainTop_right #svgs svg:nth-child(2) {
+  margin-inline: 0.5em 0;
+}
+
+#mainBody::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+#mainBody::-webkit-scrollbar-track {
+  background: var(--white2);
+  border-radius: 20px;
+  padding-inline: 1em;
+}
+
+#mainBody::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--clear_orange), var(--orange));
+  border-radius: 20px;
+}
+
+#mainBody {
+  width: 100%;
+  margin-block: 2em 0;
+  padding-block: 1em;
+  padding-inline: 0 0.5em;
+}
+#mainBody .notes {
+  position: relative;
+  background-color: var(--white2);
+  padding-block: 0.5em 1em;
+  padding-inline: 1em;
+  box-shadow: 2px 2px 10px rgba(141, 141, 141, 0.3411764706);
+  border: 0;
+  border-left: 5px solid var(--orange);
+  border-radius: 7px;
+  margin-block: 0 1.5em;
+}
+#mainBody .notes .title {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-block: 0.5em;
+}
+#mainBody .notes .notesBottom {
+  display: flex;
+  justify-content: space-between;
+}
+#mainBody .notes .notesBottom .details .date {
+  font-size: 0.8em;
+  color: var(--text_grey);
+}
+#mainBody .notes .notesBottom .details .date .time {
+  margin-inline: 0.5em 0;
+}
+#mainBody .notes .notesBottom .details .tags {
+  display: flex;
+  margin-block: 0.5em 0;
+}
+#mainBody .notes .notesBottom .dots {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  padding: 0.3em;
+}
+#mainBody .notes .notesBottom .dots .dot {
+  width: 0.2em;
+  height: 0.2em;
+  background-color: var(--dots_grey);
+  border-radius: 50%;
+  margin-inline: 1px;
+}
+#mainBody .notes .note_option {
+  background-color: var(--white);
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  position: absolute;
+  z-index: 2;
+  right: 1em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
+}
+#mainBody .notes .note_option div {
+  border-radius: 5px;
+  padding-block: 0.6em;
+  font-size: 1.05em;
+  font-weight: 400;
+  margin-block: 0.5em;
+  padding-inline: 0.7em;
+  cursor: pointer;
+}
+#mainBody .notes .note_option div:hover {
+  background-color: var(--white_hover);
+}
+#mainBody .notes .note_option .ren {
+  color: var(--dots_grey);
+}
+#mainBody .notes .note_option .del {
+  color: red;
+}
+#mainBody .selfTags {
+  display: none;
+}
+
+#createNoteForm {
+  display: block;
+}
+#createNoteForm input {
+  width: 100%;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+}
+#createNoteForm textarea {
+  width: 100%;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  font-size: 1em;
+  resize: none;
+}
+#createNoteForm .selectedTags {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+#createNoteForm .selectedTags p {
+  margin: unset;
+}
+#createNoteForm .selectedTags .tag {
+  align-self: center;
+  margin-inline: 0.5em;
+}
+#createNoteForm .forTags {
+  text-align: left;
+}
+#createNoteForm .forTags .tags {
+  width: 10em;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  font-size: 1em;
+}
+#createNoteForm .forTags .tags option {
+  font-size: 1em;
+}
+
+#rename input {
+  width: 100%;
+  margin-block: 0 1.3em;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.8em;
+  padding-inline: 1.6em;
+  font-size: 1em;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: none;
+}
+#overlay.active {
+  display: block;
 }
 
 /*# sourceMappingURL=notes.css.map */

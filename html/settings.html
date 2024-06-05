@@ -4,9 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myMEMORY | Dashboard</title>
+  <title>Settings</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../style/css/notes.css">
+  <link rel="stylesheet" href="../style/css/settings.css">
+  <!-- <link rel="stylesheet" href="../style/css/notes.css"> -->
+
+  <script src="../index.js" defer></script>
 </head>
 
 <body id="body">
@@ -57,9 +60,26 @@
           <p>Settings</p>
         </div>
       </div>
+      <div id="tagsKey">
+        <h3>Tags</h3>
+        <div class="tags">
+          <div class="key">
+            <div class="tag"></div>
+            <p>Important</p>
+          </div>
+          <div class="key">
+            <div class="tag"></div>
+            <p>Casual</p>
+          </div>
+          <div class="key">
+            <div class="tag"></div>
+            <p>Daily</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="profile">
-      <p>Mbungai Francesco</p>
+      <p class="profile_name">Mbungai Francesco</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor"
         stroke-width="0" aria-hidden="true" data-jsxid="app/components/Sidebar.tsx:Sidebar:default:166,20"
         viewBox="0 0 24 24">
@@ -70,11 +90,56 @@
     </div>
   </div>
   <main>
+    <header>
+      <h2> <span class="profile_name">Settings</span></h2>
+      <p>Manage your account and settings</p>
+    </header><br>
+    <br>
+    <br>
+    <br>
     <div id="mainTop">
-      <h2>Hello, <span>Mbungai Francesco</span></h2>
-      <p>What are you writing today?</p>
+      <h3> Generals</h3>
+      <p>Themes and preferences</p>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div >
+      <p>Notes Display and Preferences</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div >
+      <h3>Confirme Account Action</h3>
+      <p>Note:Deleting your account permanentlyremoves all your <br>
+        notes and data. Disabling it suspends access temporaly.<br>
+        Choose carefully.
+      </p>
+      <br>
+      <div class="button-container-1">
+        <button>Delete My Account</button>
+        <button class="button2">Disable My Account</button>
+      </div>
+      <div class="info-box">
+        <p>Select your favorite theme.</p>
+        <br>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+        <svg width="50" height="50">
+          <circle cx="25" cy="25" r="20" fill="white" stroke="black" stroke-width="2" />
+        </svg>
+        <br>
+        <br>
+        <p>Select your favorite colour.</p>
+        <br>
+        <button class="box"></button>
+      </div>
+    </div>
+    
   </main>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
 </body>
 
 </html>

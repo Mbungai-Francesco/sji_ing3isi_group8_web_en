@@ -5,9 +5,11 @@ const request = indexedDB.open('MyNotesDB', 1);
 request.onupgradeneeded = function(event) {
     const db = event.target.result;
     const objectStore = db.createObjectStore('notes', { keyPath: 'id', autoIncrement: true });
-    objectStore.createIndex('title', 'title', { unique: false });
+    objectStore.createIndex('title', 'title', { unique: true });
     objectStore.createIndex('description', 'description', { unique: false });
     objectStore.createIndex('tags', 'tags', { unique: false });
+    objectStore.createIndex('date', 'date', { unique: false });
+    objectStore.createIndex('time', 'time', { unique: false });
 };
 
 // Handle successful database connection

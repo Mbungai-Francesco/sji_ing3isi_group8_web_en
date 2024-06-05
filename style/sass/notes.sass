@@ -1,2 +1,305 @@
+.grid_mainBody
+  display: grid
+  grid-template-columns: 23% 23% 23% 23%
+  justify-content: space-between
+  height: fit-content
+  row-gap: 0
+  .notes
+    height: fit-content
+    direction: ltr
+  &.reverse
+    direction: rtl
+    .notes
+      direction: ltr
+.block_mainBody
+  display: flex
+  flex-direction: column
+  height: 78vh
+  overflow-y: scroll
+  .notes
+    width: 100%
+  &.reverse
+    justify-content: flex-end
+    flex-direction: column-reverse
+.choosing
+  overflow: unset !important
+  #select
+    overflow-y: scroll
+
+%tag
+  width: 1em
+  height: 1em
+  background-color: red
+  border-radius: 50%
+  margin-inline: 0 .5em
+  &.tag:nth-child(2)
+    background-color: green
+  &.tag:nth-child(3)
+    background-color: yellow
+
+%popForms
+  top: 35%
+  left: 38%
+  position: absolute
+  text-align: center
+  width: 25em
+  background-color: var(--white)
+  padding: 2em 1.5em
+  border-radius: 10px
+  z-index: 4
+  box-shadow: 0px 0px 10px #4b4b4b3f
+  display: none
+  &.active
+    display: block
+  p
+    font-size: 1.2em
+    margin-bottom: 1em
+
+%popFormsbtns
+  display: flex
+  justify-content: space-between
+  button
+    padding-block: .8em
+    padding-inline: 2.5em
+    border-radius: 5px
+    color: var(--black)
+    font-weight: 400
+    font-size: 1.1em
+  button:nth-child(1)
+    background-color: var(--grey_hover)
+    border: 1px solid var(--text_grey)
+  button:nth-child(2)
+    background-color: var(--orange)
+    border: 0
+
+%searchers
+  padding: .8em
+  padding-inline: 1em
+  width: 100%
+  background-color: var(--white2)
+  border-radius: 5px
+  font-size: .9em
+  font-weight: 400
+  border: 0
+
+.hidden
+  display: none
+
 #pages .page:nth-child(2)
   background-color: var(--white_hover)
+#mainTop
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-block: 2em 0
+  #search
+    position: relative
+    min-width: 18em
+    display: flex
+    align-items: center
+    input
+      @extend %searchers
+      &::placeholder
+        color: var(--text_grey)
+    svg
+      fill: var(--orange)
+      width: 1.3em
+      height: 1.3em
+      position: absolute
+      right: .5em
+  #mainTop_right
+    display: flex
+    align-items: center
+    justify-content: space-between
+    #filter
+      position: relative
+      background-color: var(--white2)
+      width: 6em
+      height: 2em
+      overflow: hidden
+      padding-right: 5em
+      display: flex
+      cursor: pointer
+      // overflow: unset
+      svg
+        position: absolute
+        z-index: 7
+        right: 0
+        align-self: center
+      #select
+        @extend %searchers
+        width: fit-content
+        height: 10em
+        padding-block: unset
+        cursor: pointer
+        position: absolute
+        z-index: 2
+        transition: .5s ease
+        // top: -3em
+        .options
+          // border: 1px solid red
+          font-size: 1em
+          font-weight: 400
+          padding-block: .5em
+          padding-inline: .5em
+          &:hover
+            background-color: var(--grey_hover)
+    #svgs
+      margin-inline: 1em 0
+      svg
+        width: 2.9em
+        height: 2.5em
+        padding: .7em
+        background-color: var(--white_hover)
+        fill: var(--orange)
+        border-radius: 5px
+      svg:nth-child(2)
+        margin-inline: .5em 0
+#mainBody::-webkit-scrollbar
+  width: 0.5em
+#mainBody::-webkit-scrollbar-track
+  background: var(--white2)
+  border-radius: 20px
+  padding-inline: 1em
+#mainBody::-webkit-scrollbar-thumb
+  background: linear-gradient(to bottom,var(--clear_orange),var(--orange))
+  border-radius: 20px
+#mainBody
+  width: 100%
+  margin-block: 2em 0
+  padding-block: 1em
+  padding-inline: 0 .5em
+  .notes
+    position: relative
+    // z-index: 1
+    background-color: var(--white2)
+    padding-block: .5em 1em
+    padding-inline: 1em
+    box-shadow: 2px 2px 10px #8d8d8d57
+    border: 0
+    border-left: 5px solid var(--orange)
+    border-radius: 7px
+    margin-block: 0 1.5em
+    .title
+      font-size: 1.2em
+      font-weight: 500
+      margin-block: .5em 
+    .notesBottom
+      display: flex
+      justify-content: space-between
+      .details
+        .date
+          font-size: .8em
+          color: var(--text_grey)
+          .time
+            margin-inline: .5em 0
+        .tags
+          display: flex
+          margin-block: .5em 0
+          .tag
+            @extend %tag
+      .dots
+        display: flex
+        align-items: center
+        align-self: flex-end
+        // background-color: black
+        padding: .3em
+        .dot
+          width: .2em
+          height: .2em
+          background-color: var(--dots_grey)
+          border-radius: 50%
+          margin-inline: 1px
+    .note_option
+      background-color: var(--white)
+      padding-block: .5em
+      padding-inline: .5em
+      position: absolute
+      z-index: 2
+      right: 1em
+      border-radius: 5px
+      box-shadow: 0px 0px 10px #4b4b4b3f
+      div
+        border-radius: 5px
+        padding-block: .6em
+        font-size: 1.05em
+        font-weight: 400
+        margin-block: .5em
+        padding-inline: .7em
+        cursor: pointer
+        &:hover
+          background-color: var(--white_hover)
+      .ren
+        color: var(--dots_grey)
+      .del
+        color: red
+        // padding-inline: .5em 
+  .selfTags
+    display: none 
+
+#createNoteForm
+  @extend %popForms
+  display: block
+  input
+    width: 100%
+    padding-block: .5em
+    padding-inline: .5em
+  textarea
+    width: 100%
+    // margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .5em
+    padding-inline: .5em
+    font-size: 1em
+    resize: none
+  .selectedTags
+    display: flex
+    align-content: center
+    flex-wrap: wrap
+    p
+      margin: unset
+    .tag
+      @extend %tag
+      align-self: center
+      margin-inline: .5em
+  .forTags
+    text-align: left
+    .tags
+      width: 10em
+      padding-block: .5em
+      padding-inline: .5em
+      font-size: 1em
+      option
+        // background-color: red
+        font-size: 1em
+
+#rename
+  @extend %popForms
+  input 
+    width: 100%
+    margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .8em
+    padding-inline: 1.6em
+    font-size: 1em
+  #renameBtn
+    @extend %popFormsbtns
+
+#delete
+  @extend %popForms
+  #deleteBtn
+    @extend %popFormsbtns
+    
+#overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background-color: rgba(0, 0, 0, 0.5)
+  z-index: 3
+  display: none
+  &.active
+    display: block
