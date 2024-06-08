@@ -12,6 +12,7 @@ const theNotes = function (Notes, arrTag) {
 	var renameUpdate = $("#renUpdate");
 	var del = $("#delete");
 	var delCancel = $("#delCancel");
+	var delDelete = $("#delDelete");
 	var overlay = $("#overlay");
 	var currentlyUpdating;
 	var createNote = $("#createNote");
@@ -38,6 +39,7 @@ const theNotes = function (Notes, arrTag) {
 		renameUpdate = $("#renUpdate");
 		del = $("#delete");
 		delCancel = $("#delCancel");
+		delDelete = $("#delDelete");
 		overlay = $("#overlay");
 		createNote = $("#createNote");
 		filter = $("#filter");
