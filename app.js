@@ -41,7 +41,7 @@ const onStartUp = function () {
 		function addNote(note) {
 			const noteTransaction = db.transaction(["notes"], "readwrite");
 			const notesStore = noteTransaction.objectStore("notes");
-			const request = notesStore.add(note);
+			const request = notesStore.put(note);
 
 			request.onsuccess = function (event) {
 				console.log("Note added to the database");
@@ -149,6 +149,15 @@ const onStartUp = function () {
 			console.log('in del');
 			delNote(param)
 		};
+		updateNote = function (id,title){ 
+			appNotes.forEach(element => {
+				if(element.id == id){
+					element.title = title
+					console.log(element);
+					addNote(element)
+				}
+			})
+		}
 		// theNotes(appNotes, appTags);
 		// console.table(Notes);
 		// console.table(arrTag);

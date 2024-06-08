@@ -12,7 +12,6 @@ const theNotes = function (Notes, arrTag) {
 	var renameUpdate = $("#renUpdate");
 	var del = $("#delete");
 	var delCancel = $("#delCancel");
-	var delDelete = $("#delDelete");
 	var overlay = $("#overlay");
 	var currentlyUpdating;
 	var createNote = $("#createNote");
@@ -39,7 +38,6 @@ const theNotes = function (Notes, arrTag) {
 		renameUpdate = $("#renUpdate");
 		del = $("#delete");
 		delCancel = $("#delCancel");
-		delDelete = $("#delDelete");
 		overlay = $("#overlay");
 		createNote = $("#createNote");
 		filter = $("#filter");
@@ -53,13 +51,12 @@ const theNotes = function (Notes, arrTag) {
 
 	// console.log('At top');
 
-	const handleCreateNote = function(){
+	const handlecreateNote = function(){
 		overlay.toggle("active");
 		$("#createNoteForm").toggle("active");
 	}
 
 	const handleCreate = function () {
-		console.log('in create');
 		const noteT = $("#createNoteForm input"); 
 		if (noteT.val() != "") {
 			let note = {
@@ -264,16 +261,13 @@ const theNotes = function (Notes, arrTag) {
 	});
 
 	notes_opt_ren.on("click", function () {
-		// console.log(noteWeOn.attr("val"));
 		$(this).parent().parent().parent().addClass("working");
-		const noteWeOn = $('.working')
-		let name = noteWeOn.children(":first").text();
+		let name = $(this).parent().parent().parent().children(":first").text();
 		if ($(this).attr("class") == "ren") {
 			rename.children("input").val(name);
 			rename.toggle("active");
 			overlay.toggle("active");
 		} else if ($(this).attr("class") == "del") {
-			console.log(Number(noteWeOn.attr("val")));
 			del.children(":first").children(":last").text(name);
 			del.toggle("active");
 			overlay.toggle("active");
@@ -288,45 +282,22 @@ const theNotes = function (Notes, arrTag) {
 	});
 
 	renameUpdate.on("click", function () {
-		const noteWeOn = $('.working')
 		$(".working").children(":first").text(rename.children("input").val());
-		const noteT = $("#createNoteForm input"); 
-		if (noteT.val() != "") {
-			let note = {
-				title: noteT.val(),
-				date: moment().format("YYYY-MM-DD"),
-				time: moment().format("HH:mm"),
-				description: "",
-				tags: selectedTags[0],
-				category: "",
-			};
-			storeNote(note);
-			console.log(note);
-			window.location.reload();
-		} else{ 
-			console.log("No title")
-			window.location.reload();
-		};
+		console.log($(".working").attr("val"));
+		updateNote($(".working").attr("val"),rename.children("input").val())
 		$(".working").removeClass("working");
 		closeForms(rename);
 	});
 
-	delDelete.on("click", function () {
-		// delNote(noteWeOn.attr("val"))
-		deleteNote(Number($(".working").attr("val")));
-		window.location.reload();
-	});
-
 	createNote.on("click", function () {
-		handleCreateNote()
+		handlecreateNote()
 	});
 
 	$('#cancel').on("click", function () {
-		handleCreateNote()
+		handlecreateNote()
 	});
 
 	$("#create").on("click", function () {
-		console.log('in create more');
 		handleCreate();
 	});
 };
