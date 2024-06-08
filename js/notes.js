@@ -291,6 +291,12 @@ const theNotes = function (Notes, arrTag) {
 		closeForms(rename);
 	});
 
+	delDelete.on("click", function () {
+		// delNote(noteWeOn.attr("val"))
+		deleteNote(Number($(".working").attr("val")));
+		window.location.reload();
+	});
+
 	createNote.on("click", function () {
 		handlecreateNote()
 	});
