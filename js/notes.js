@@ -65,7 +65,7 @@ const theNotes = function (Notes, arrTag) {
 				time: moment().format("HH:mm"),
 				description: "",
 				tags: selectedTags[0],
-				category: "",
+				category: [''],
 			};
 			storeNote(note);
 			console.log(note);
