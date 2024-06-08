@@ -2,6 +2,8 @@
 const request = indexedDB.open("myMEMORYDB", 1);
 
 var storeNote;
+var deleteNote;
+var updateNote;
 
 // Create the object store and define the object's structure
 request.onupgradeneeded = function (event) {
@@ -28,39 +30,53 @@ request.onupgradeneeded = function (event) {
 
 // Handle successful database connection
 
-const onStartUp = function() {
-	console.log('am first in app');
+const onStartUp = function () {
+	console.log("am first in app");
 	request.onsuccess = function (event) {
 		var appNotes = [],
 			appTags = [];
 		console.log(event);
 		const db = event.target.result;
-	
-		// Add a new note to the database
+
 		function addNote(note) {
-			const transaction = db.transaction(["notes"], "readwrite");
-			const notesStore = transaction.objectStore("notes");
+			const noteTransaction = db.transaction(["notes"], "readwrite");
+			const notesStore = noteTransaction.objectStore("notes");
 			const request = notesStore.add(note);
-	
+
 			request.onsuccess = function (event) {
 				console.log("Note added to the database");
 			};
-	
+
 			request.onerror = function (event) {
 				console.error("Error adding note to the database");
 			};
 		}
-	
+
+		function delNote(note) {
+			const noteTransaction = db.transaction(["notes"], "readwrite");
+			const notesStore = noteTransaction.objectStore("notes");
+			const request = notesStore.delete(note);
+
+			request.onsuccess = function (event) {
+				console.log("Note deleted from database");
+			};
+
+			request.onerror = function (event) {
+				console.error("Error deleting note from database");
+			};
+		}
+
 		// Retrieve all notes from the database
 		function getAllNotes() {
-			const transaction = db.transaction(["notes"], "readonly");
-			const notesStore = transaction.objectStore("notes");
+			const noteTransaction = db.transaction(["notes"], "readwrite");
+			const notesStore = noteTransaction.objectStore("notes");
 			const request = notesStore.getAll();
-	
+
 			request.onsuccess = function (event) {
 				const notes = event.target.result;
 				// console.table(notes);
 				appNotes = notes;
+				// console.log(appNotes);
 				let promise = new Promise(function (resolve, reject) {
 					resolve(appNotes);
 					// if (appTags.length>0 && appNotes.length>0) {
@@ -71,31 +87,31 @@ const onStartUp = function() {
 				// console.table(appNotes);
 				// return notes
 			};
-	
+
 			request.onerror = function (event) {
 				console.error("Error retrieving notes from the database");
 			};
 		}
-	
+
 		function addTags(tag) {
-			const transaction = db.transaction(["tags"], "readwrite");
-			const tagStore = transaction.objectStore("tags");
+			const tagTransaction = db.transaction(["tags"], "readwrite");
+			const tagStore = tagTransaction.objectStore("tags");
 			const request = tagStore.add(tag);
-	
+
 			request.onsuccess = function (event) {
 				console.log("Tag added to the database");
 			};
-	
+
 			request.onerror = function (event) {
 				console.error("Error adding note to the database");
 			};
 		}
-	
+
 		function getAllTags() {
-			const transaction = db.transaction(["tags"], "readonly");
-			const tagStore = transaction.objectStore("tags");
+			const tagTransaction = db.transaction(["tags"], "readwrite");
+			const tagStore = tagTransaction.objectStore("tags");
 			const request = tagStore.getAll();
-	
+
 			request.onsuccess = function (event) {
 				const tags = event.target.result;
 				// console.table(tags);
@@ -110,7 +126,7 @@ const onStartUp = function() {
 				// console.log(appTags);
 				// return tags
 			};
-	
+
 			request.onerror = function (event) {
 				console.error("Error retrieving tags from the database");
 			};
@@ -121,25 +137,63 @@ const onStartUp = function() {
 		// for (const iterator of arrTag) {
 		//     addTags(iterator)
 		// }
-	
+
 		// addNote(Notes);
 		getAllNotes();
 		getAllTags();
 		storeNote = function (param) {
-			addNote(param)
+			console.log('am in storeNote');
+			addNote(param);
+		};
+		deleteNote = function (param) {
+			console.log('in del');
+			delNote(param)
 		};
 		// theNotes(appNotes, appTags);
 		// console.table(Notes);
 		// console.table(arrTag);
 		// Notes = sortNotes(Notes)
 		// console.log(Notes);
-		console.log('am in app');
+		console.log("am in app");
 	};
-	
+
 	// Handle database connection errors
 	request.onerror = function (event) {
 		console.error("Error opening the database");
 	};
-}
+};
 
-onStartUp()
+onStartUp();
+
+// storeNote = function (param) {
+// 	console.log('am in storeNote');
+// 	request.onsuccess = function (event) {
+// 		const db = event.target.result;
+// 		const noteTransaction = db.transaction(["notes"], "readwrite");
+// 		const notesStore = noteTransaction.objectStore("notes");
+// 		// Add a new note to the database
+// 		function addNote(note) {
+// 			const request = notesStore.add(note);
+
+// 			request.onsuccess = function (event) {
+// 				console.log("Note added to the database");
+// 			};
+
+// 			request.onerror = function (event) {
+// 				console.error("Error adding note to the database");
+// 			};
+// 		}
+// 		addNote(param);
+// 	};
+// };
+
+// delNote = function (param) {
+// 	console.log('in del');
+// 	request.onsuccess = function (event) {
+// 		console.log('in del2');
+// 		const db = event.target.result;
+// 		const noteTransaction = db.transaction(["notes"], "readwrite");
+// 		const notesStore = noteTransaction.objectStore("notes");
+// 		notesStore.delete(param);
+// 	};
+// };
