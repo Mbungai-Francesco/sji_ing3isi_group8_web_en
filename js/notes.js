@@ -23,6 +23,7 @@ const theNotes = function (Notes, arrTag) {
 	var newTags = $(".selectedTags");
 	var arr,
 		selectedTags = [[], "<p>Tags:</p>"];
+	console.log("am in 2");
 
 	const getAll = function () {
 		body = $("body");
@@ -45,18 +46,35 @@ const theNotes = function (Notes, arrTag) {
 		tagOptionstag = $("#createNoteForm .tags option");
 		noteTitle = $("#createNoteForm input");
 		newTags = $(".selectedTags");
+		console.log("am in 3");
 	};
 
 	// console.log('At top');
 
-	function Note(id, title, date, time, description, tags) {
-		this.id = id;
-		this.title = title;
-		this.date = date;
-		this.time = time;
-		this.description = description;
-		this.tags = tags;
+	const handlecreateNote = function(){
+		overlay.toggle("active");
+		$("#createNoteForm").toggle("active");
 	}
+
+	const handleCreate = function () {
+		const noteT = $("#createNoteForm input"); 
+		if (noteT.val() != "") {
+			let note = {
+				title: noteT.val(),
+				date: moment().format("YYYY-MM-DD"),
+				time: moment().format("HH:mm"),
+				description: "",
+				tags: selectedTags[0],
+				category: "",
+			};
+			storeNote(note);
+			console.log(note);
+			window.location.reload();
+		} else{ 
+			console.log("No title")
+			window.location.reload();
+		};
+	};
 
 	const makeNotes = function (Notes) {
 		for (const iterator of Notes) {
@@ -188,23 +206,6 @@ const theNotes = function (Notes, arrTag) {
 		}
 	};
 
-	$("#create").on("click", function () {
-		if (noteTitle.val() != "") {
-			let note = {
-				title: noteTitle.val(),
-				date: moment().format("YYYY-MM-DD"),
-				time: moment().format("HH:mm"),
-				description: "Annual check-up",
-				tags: selectedTags[0],
-				category: ["Health", "Personal"],
-			};
-			console.log(note.title);
-			console.log(note.tags);
-			console.log(note.date);
-			console.log(note.time);
-		} else console.log("No title");
-	});
-
 	tagOptions.on("change", function () {
 		// console.log($(this).val());
 		assignTags(selectedTags[0], $(this).val());
@@ -292,7 +293,14 @@ const theNotes = function (Notes, arrTag) {
 	});
 
 	createNote.on("click", function () {
-		overlay.toggle("active");
-		$("#createNoteForm").toggle("active");
+		handlecreateNote()
+	});
+
+	$('#cancel').on("click", function () {
+		handlecreateNote()
+	});
+
+	$("#create").on("click", function () {
+		handleCreate();
 	});
 };
