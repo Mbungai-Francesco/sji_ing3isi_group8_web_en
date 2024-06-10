@@ -9,9 +9,6 @@
   height: fit-content;
   direction: ltr;
 }
-.grid_mainBody.reverse {
-  direction: rtl;
-}
 .grid_mainBody.reverse .notes {
   direction: ltr;
 }
