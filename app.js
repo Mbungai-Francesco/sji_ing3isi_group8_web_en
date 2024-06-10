@@ -75,7 +75,7 @@ const onStartUp = function () {
 			request.onsuccess = function (event) {
 				const notes = event.target.result;
 				// console.table(notes);
-				appNotes = notes;
+				appNotes = sortNotes(notes,'date');
 				// console.log(appNotes);
 				let promise = new Promise(function (resolve, reject) {
 					resolve(appNotes);

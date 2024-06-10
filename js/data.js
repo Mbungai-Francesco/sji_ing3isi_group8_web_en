@@ -7,19 +7,23 @@ let arrTag
 // let tagSet = new Set()
 // tagSet.add('Tags')
 
-const sortNotes = function (notes) {
-  for (let i = 0; i < (notes.length -1); i++) {
-    let min = i
-    for (let j = i + 1; j < notes.length; j++) {
-      if (notes[j].title < notes[min].title) {
-        min = j;
+const sortNotes = function (notes,sortBy) {
+  if(sortBy == ''){}
+  else{
+    for (let i = 0; i < (notes.length -1); i++) {
+      let min = i
+      for (let j = i + 1; j < notes.length; j++) {
+        // console.log(notes[j]);
+        if (notes[j][sortBy] < notes[min][sortBy]) {
+          min = j;
+        }
       }
+      if(min != i){
+        let temp = notes[min]
+        notes[min] = notes[i]
+        notes[i] = temp
+       }
     }
-    if(min != i){
-      let temp = notes[min]
-      notes[min] = notes[i]
-      notes[i] = temp
-     }
   }
   return notes
 }
