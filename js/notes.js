@@ -297,9 +297,9 @@ const theNotes = function (Notes, arrTag) {
 		window.location.reload();
 	});
 
-	createNote.on("click", function () {
-		handlecreateNote()
-	});
+	// createNote.on("click", function () {
+	// 	handlecreateNote()
+	// });
 
 	$('#cancel').on("click", function () {
 		handlecreateNote()
