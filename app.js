@@ -4,6 +4,9 @@ const request = indexedDB.open("myMEMORYDB", 1);
 var storeNote;
 var deleteNote;
 var updateNote;
+var storeTag;
+var deleteTag;
+var updateTag;
 
 // Create the object store and define the object's structure
 request.onupgradeneeded = function (event) {
@@ -24,7 +27,7 @@ request.onupgradeneeded = function (event) {
 		keyPath: "id",
 		autoIncrement: true,
 	});
-	objectStoreTags.createIndex("tagName", "tagName", { unique: true });
+	objectStoreTags.createIndex("name", "name", { unique: true });
 	objectStoreTags.createIndex("color", "color", { unique: true });
 };
 
@@ -75,7 +78,7 @@ const onStartUp = function () {
 			request.onsuccess = function (event) {
 				const notes = event.target.result;
 				// console.table(notes);
-				appNotes = sortNotes(notes,'date');
+				appNotes = sortNotes(notes, "date");
 				// console.log(appNotes);
 				let promise = new Promise(function (resolve, reject) {
 					resolve(appNotes);
@@ -84,7 +87,7 @@ const onStartUp = function () {
 					// }
 				});
 				promise.then((result) => {
-					console.log(result)
+					console.log(result);
 					getAllTags();
 				});
 				// console.table(appNotes);
@@ -127,7 +130,7 @@ const onStartUp = function () {
 				});
 				promise.then((result) => {
 					console.log(result);
-					theNotes(appNotes, appTags)
+					theNotes(appNotes, appTags, arrColor);
 				});
 				// console.log(appTags);
 				// return tags
@@ -145,24 +148,32 @@ const onStartUp = function () {
 		// }
 
 		// addNote(Notes);
-		getAllNotes();
 		storeNote = function (param) {
-			console.log('am in storeNote');
+			console.log("am in storeNote");
 			addNote(param);
 		};
-		deleteNote = function (param) {
-			console.log('in del');
-			delNote(param)
+		storeTag = function (param) {
+			console.log("am in storeTag");
+			addTags(param);
 		};
-		updateNote = function (id,title){ 
-			appNotes.forEach(element => {
-				if(element.id == id){
-					element.title = title
+		deleteNote = function (param) {
+			console.log("in del");
+			delNote(param);
+		};
+		updateNote = function (id, title) {
+			appNotes.forEach((element) => {
+				if (element.id == id) {
+					element.title = title;
 					console.log(element);
-					addNote(element)
+					addNote(element);
 				}
-			})
-		}
+			});
+		};
+		storeTag({ name: "Important", color: 'red' });
+		storeTag({ name: "Casual", color: 'green' });
+		storeTag({ name: "Daily", color: 'yellow' });
+		getAllNotes();
+		
 		// theNotes(appNotes, appTags);
 		// console.table(Notes);
 		// console.table(arrTag);

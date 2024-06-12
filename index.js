@@ -2,31 +2,7 @@ const pages = $("#sideBar .page");
 const body = $("body");
 const createTag = $("#createTag");
 const createTagForm = $("#createTagForm");
-var data = ''
-
-// $.ajax({
-//   url: "https://csscolorsapi.com/api/colors",
-//   type: 'GET',
-//   dataType: 'json', // The type of data you're expecting back from the server
-//   success: function(data) {
-//     console.log(data);
-//   },
-//   error: function(error) {
-//     console.error('Error:', error);
-//   }
-// });
-
-// var xhttp = new XMLHttpRequest();
-//   xhttp.onload = function () {
-//     if (this.readyState == 4) {
-//       var response = JSON.parse(xhttp.responseText);
-//       Notes = response.Notes
-//       console.log(Notes);
-//       // console.log(arrTag);
-//     }
-//   };
-//   xhttp.open("GET", "https://csscolorsapi.com/api/colors", true);
-//   xhttp.send();
+const colorMenu = $('.dropbtn')
 
 const bringTheForms = (form) => {
 	$("#overlay").toggle("active");
@@ -59,3 +35,11 @@ body.on("keydown", function (e) {
 createTag.on("click", function () {
 	bringTheForms("createTagForm");
 });
+
+colorMenu.on("click", function () {
+	$(".dropdown-content").toggle("show");
+});
+
+$('#tagCancel').on('click', function () {
+	bringTheForms("createTagForm");
+})

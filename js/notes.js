@@ -1,4 +1,4 @@
-const theNotes = function (Notes, arrTag) {
+const theNotes = function (Notes, arrTag, arrColor) {
 	// console.log(Notes);
 	var body = $("body");
 	var mainBody = $("#mainBody");
@@ -26,6 +26,7 @@ const theNotes = function (Notes, arrTag) {
 		selectedTags = [[], "<p>Tags:</p>"];
 	console.log("am in 2");
 	var currentBody = localStorage.getItem("currentBody");
+	// $('#tagsKey .tags').append(adminTags)
 
 	const getAll = function () {
 		body = $("body");
@@ -79,6 +80,23 @@ const theNotes = function (Notes, arrTag) {
 		}
 	};
 
+	const handleCreateTag = function () {
+		const tagT = $("#createTagForm input");
+		const tagCol = $('.dropbtn');
+		if (tagT.val() != "" && tagCol.val() != ""){
+			let tag = {
+				name: tagT.val(),
+				color: tagCol.val().toLowerCase(),
+			};
+			storeTag(tag);
+			console.log(tag);
+			window.location.reload();
+		} else {
+			console.log("No tag title");
+			window.location.reload();
+		}
+	};
+
 	const makeNotes = function (Notes) {
 		$("#mainBody").removeClass("grid_mainBody");
 		$("#mainBody").removeClass("block_mainBody");
@@ -114,13 +132,29 @@ const theNotes = function (Notes, arrTag) {
 			tagSelect += newTagSelect(cate.name, cate.color);
 		}
 		tagOptions.append(tagSelect);
+		for (const col of arrColor) {
+			colorSelect += newColorSelect(col.name);
+		}
+		$('.dropdown-content').append(colorSelect);
 		// categorySelect.parent().innerWidth(categorySelect.innerWidth() + 16)
 		// console.log(categotyOptions);
 		getAll();
 	};
 
 	makeNotes(Notes);
-	// bodyLayout()
+
+	const makeTags = function (arrTag) {
+		for (const iterator of arrTag) {
+			$('#tagsKey .tags').append(
+				tagKeys(
+					iterator.name,
+					iterator.color,
+				)
+			);
+		}
+	}
+
+	makeTags(arrTag)
 
 	noteHeight = notes.eq(0).height();
 	notes_opt.css("bottom", `${-1 * noteHeight}px`); // positions the note-option someway below the note
@@ -129,6 +163,17 @@ const theNotes = function (Notes, arrTag) {
 		ele.toggle("active");
 		overlay.toggle("active");
 	};
+
+	function filterColor(searchTerm) {
+		$(".dropdown-content .cols").each(function () {
+			var text = $(this).text().toLowerCase();
+			if (text.includes(searchTerm)) {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
+	}
 
 	function filterContacts(searchTerm) {
 		$("#mainBody .notes").each(function () {
@@ -287,6 +332,12 @@ const theNotes = function (Notes, arrTag) {
 		filterContacts(searchTerm);
 	});
 
+	$(".dropbtn").on("input", function () {
+		// console.log($(this).val().toLowerCase());
+		var searchTerm = $(this).val().toLowerCase();
+		filterColor(searchTerm);
+	});
+
 	notes_opt_ren.on("click", function () {
 		$(this).parent().parent().parent().addClass("working");
 		let name = $(this).parent().parent().parent().children(":first").text();
@@ -333,4 +384,15 @@ const theNotes = function (Notes, arrTag) {
 	$("#create").on("click", function () {
 		handleCreate();
 	});
+
+	$(".dropdown-content .cols").on('click', function () {
+		$('.dropbtn').css('background-color', $(this).attr('value'));
+		$('.dropbtn').val($(this).attr('value'));
+		// $(this).children('p').css('color', $(this).attr('value'));
+		// $(this).children('p').css("filter", "invert(1)");
+	})
+
+	$('#tagCreate').on('click', function () {
+		handleCreateTag();
+	})
 };

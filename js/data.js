@@ -4,9 +4,23 @@ if (!localStorage.getItem('currentBody')) {
 var Notes = [];
 var categories = ""
 var tagSelect = "<option value=''>Choose tags</option>"
+var colorSelect = ""
 let catSet = new Set()
 catSet.add('All') 
 let arrTag
+let arrColor
+let adminTags = ` <div class="key">
+              <div class="tag" style="background-color: red;"></div>
+              <p>Important</p>
+            </div>
+            <div class="key">
+              <div class="tag" style="background-color: green;"></div>
+              <p>Casual</p>
+            </div>
+            <div class="key">
+              <div class="tag" style="background-color: yellow;"></div>
+              <p>Daily</p>
+            </div>`
 // let tagSet = new Set()
 // tagSet.add('Tags')
 
@@ -75,12 +89,23 @@ var newTag = function (col){
   return `<div class="tag" style="background-color: ${col};" ></div>`
 }
 
+var tagKeys = function (name,col){
+  return `<div class="key">
+              <div class="tag" style="background-color: ${col};"></div>
+              <p>${name}</p>
+            </div>` 
+}
+
 var newCat = function (col,i){
   return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
 }
 
 var newTagSelect = function (nom,col){
   return `<option value="${col.toLowerCase()}">${nom}</option>`
+}
+
+var newColorSelect = function (nom){
+  return `<div class="cols" value="${nom}"><p>${nom}</p><div class="col" style="background-color: ${nom};"></div></div>`
 }
 
 // const goGetNotes = function () {
@@ -100,3 +125,20 @@ var newTagSelect = function (nom,col){
 // }
 
 // goGetNotes()
+
+
+const goGetColors = function () {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {
+    if (this.readyState == 4) {
+      var response = JSON.parse(xhttp.responseText);
+      arrColor = response
+      console.log(arrColor);
+      // console.log(arrTag);
+    }
+  };
+  xhttp.open("GET", "../js/data.json", true);
+  xhttp.send();
+}
+
+goGetColors()

@@ -116,9 +116,6 @@ body{
 #tagsKey .tags .key:nth-child(3) .tag{
   background-color: yellow;
 }
-#createTag svg{
-
-}
 #profile{
   background-color: var(--white_hover);
   justify-content: space-between;
