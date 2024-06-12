@@ -395,4 +395,11 @@ const theNotes = function (Notes, arrTag, arrColor) {
 	$('#tagCreate').on('click', function () {
 		handleCreateTag();
 	})
+
+	$('#noteContent .back').on()
+
+	$('.notes').on('click', function (){
+		console.log($(this).attr('val'));
+		console.log(getNote_id($(this).attr('val')));
+	})
 };

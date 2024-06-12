@@ -2,6 +2,7 @@
 const request = indexedDB.open("myMEMORYDB", 1);
 
 var storeNote;
+var getNote_id;
 var deleteNote;
 var updateNote;
 var storeTag;
@@ -66,6 +67,21 @@ const onStartUp = function () {
 
 			request.onerror = function (event) {
 				console.error("Error deleting note from database");
+			};
+		}
+
+		function getNote(id) {
+			const noteTransaction = db.transaction(["notes"], "readwrite");
+			const notesStore = noteTransaction.objectStore("notes");
+			const request = notesStore.get(id);
+
+			request.onsuccess = function (event) {
+				console.log(event.target.result);
+				return event.target.result;
+			};
+
+			request.onerror = function (e) {
+				console.log("Error", e.target.error.name);
 			};
 		}
 
@@ -152,6 +168,10 @@ const onStartUp = function () {
 			console.log("am in storeNote");
 			addNote(param);
 		};
+		getNote_id = function (param) {
+			console.log("am in getNote_id");
+			getNote(param);
+		};
 		storeTag = function (param) {
 			console.log("am in storeTag");
 			addTags(param);
@@ -169,11 +189,11 @@ const onStartUp = function () {
 				}
 			});
 		};
-		storeTag({ name: "Important", color: 'red' });
-		storeTag({ name: "Casual", color: 'green' });
-		storeTag({ name: "Daily", color: 'yellow' });
+		storeTag({ name: "Important", color: "red" });
+		storeTag({ name: "Casual", color: "green" });
+		storeTag({ name: "Daily", color: "yellow" });
 		getAllNotes();
-		
+
 		// theNotes(appNotes, appTags);
 		// console.table(Notes);
 		// console.table(arrTag);

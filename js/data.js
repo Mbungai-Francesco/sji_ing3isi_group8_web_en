@@ -7,6 +7,8 @@ var tagSelect = "<option value=''>Choose tags</option>"
 var colorSelect = ""
 let catSet = new Set()
 catSet.add('All') 
+let tagSet = new Set()
+tagSet.add('All tags') 
 let arrTag
 let arrColor
 let adminTags = ` <div class="key">
@@ -97,6 +99,10 @@ var tagKeys = function (name,col){
 }
 
 var newCat = function (col,i){
+  return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
+}
+
+var newTagSort = function (col,i){
   return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
 }
 

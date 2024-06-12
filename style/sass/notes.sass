@@ -180,7 +180,7 @@
   padding-inline: 0 .5em
   .notes
     position: relative
-    // z-index: 1
+    cursor: pointer
     background-color: var(--white2)
     padding-block: .5em 1em
     padding-inline: 1em
@@ -336,6 +336,42 @@
     margin: 0
   #createTagBtn
     @extend %popFormsbtns
+
+#noteContent
+  @extend %popForms
+  // display: block
+  padding: .5em
+  text-align: unset
+  width: 45em
+  left: 25%
+  top: 15%
+  .top
+    display: flex
+    justify-content: space-between
+    .back, .done
+      padding: .3em
+      display: flex
+      align-items: center
+      cursor: pointer
+      border-radius: 3px
+      svg
+        width: 1.5em
+        height: 1.5em
+      &:hover
+        background-color: var(--text_grey)
+    .back
+      svg
+        fill: var(--orange)
+        rotate: 180deg
+    p
+      margin: 0
+      margin-inline: .5em
+  textarea
+    margin: 0
+    margin-top: 1em
+    padding-inline: .5em
+    resize: none
+
 
 #rename
   @extend %popForms
