@@ -1,8 +1,11 @@
+if (!localStorage.getItem('currentBody')) {
+  localStorage.setItem('currentBody', 'grid_mainBody');
+}
 var Notes = [];
 var categories = ""
-var tagSelect = ""
+var tagSelect = "<option value=''>Choose tags</option>"
 let catSet = new Set()
-catSet.add('All')
+catSet.add('All') 
 let arrTag
 // let tagSet = new Set()
 // tagSet.add('Tags')

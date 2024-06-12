@@ -25,6 +25,7 @@ const theNotes = function (Notes, arrTag) {
 	var arr,
 		selectedTags = [[], "<p>Tags:</p>"];
 	console.log("am in 2");
+	var currentBody = localStorage.getItem("currentBody");
 
 	const getAll = function () {
 		body = $("body");
@@ -53,13 +54,13 @@ const theNotes = function (Notes, arrTag) {
 
 	// console.log('At top');
 
-	const handlecreateNote = function(){
+	const handlecreateNote = function () {
 		overlay.toggle("active");
 		$("#createNoteForm").toggle("active");
-	}
+	};
 
 	const handleCreate = function () {
-		const noteT = $("#createNoteForm input"); 
+		const noteT = $("#createNoteForm input");
 		if (noteT.val() != "") {
 			let note = {
 				title: noteT.val(),
@@ -67,18 +68,24 @@ const theNotes = function (Notes, arrTag) {
 				time: moment().format("HH:mm"),
 				description: "",
 				tags: selectedTags[0],
-				category: [''],
+				category: [""],
 			};
 			storeNote(note);
 			console.log(note);
 			window.location.reload();
-		} else{ 
-			console.log("No title")
+		} else {
+			console.log("No title");
 			window.location.reload();
-		};
+		}
 	};
 
 	const makeNotes = function (Notes) {
+		$("#mainBody").removeClass("grid_mainBody");
+		$("#mainBody").removeClass("block_mainBody");
+		$("#mainBody").addClass(currentBody);
+		if (currentBody.includes("reverse")) {
+			Notes = Notes.reverse();
+		}
 		for (const iterator of Notes) {
 			mainBody.append(
 				newNote(
@@ -113,6 +120,7 @@ const theNotes = function (Notes, arrTag) {
 	};
 
 	makeNotes(Notes);
+	// bodyLayout()
 
 	noteHeight = notes.eq(0).height();
 	notes_opt.css("bottom", `${-1 * noteHeight}px`); // positions the note-option someway below the note
@@ -200,12 +208,25 @@ const theNotes = function (Notes, arrTag) {
 			selectedTags[1] += newTag(col);
 			newTags.empty();
 			newTags.append(selectedTags[1]);
+		} else {
+			selectedTags[0].splice(selectedTags[0].indexOf(col), 1);
+			selectedTags[1] = "<p>Tags:</p>";
+			for (const iterator of selectedTags[0]) {
+				selectedTags[1] += newTag(iterator);
+			}
+			newTags.empty();
+			newTags.append(selectedTags[1]);
 		}
+		tagOptions.val("");
 	};
 
 	tagOptions.on("change", function () {
 		// console.log($(this).val());
-		assignTags(selectedTags[0], $(this).val());
+		// assignTags(selectedTags[0], $(this).val());
+	});
+	tagOptions.on("click", function () {
+		console.log($(this).val());
+		if ($(this).val() != "") assignTags(selectedTags[0], $(this).val());
 	});
 
 	filter.on("click", function () {
@@ -216,11 +237,14 @@ const theNotes = function (Notes, arrTag) {
 
 	switcher.eq(0).on("click", function () {
 		$("#mainBody").toggleClass("reverse");
+		localStorage.setItem("currentBody", $("#mainBody").attr("class"));
+		window.location.reload();
 	});
 
 	switcher.eq(1).on("click", function () {
 		$("#mainBody").toggleClass("grid_mainBody");
 		$("#mainBody").toggleClass("block_mainBody");
+		localStorage.setItem("currentBody", $("#mainBody").attr("class"));
 	});
 
 	dots.on("click", function () {
@@ -251,6 +275,7 @@ const theNotes = function (Notes, arrTag) {
 		}
 		// console.log(val);
 	});
+
 
 	// $(document).ready(function () {
 
@@ -286,7 +311,7 @@ const theNotes = function (Notes, arrTag) {
 	renameUpdate.on("click", function () {
 		$(".working").children(":first").text(rename.children("input").val());
 		console.log($(".working").attr("val"));
-		updateNote($(".working").attr("val"),rename.children("input").val())
+		updateNote($(".working").attr("val"), rename.children("input").val());
 		$(".working").removeClass("working");
 		closeForms(rename);
 	});
@@ -301,8 +326,8 @@ const theNotes = function (Notes, arrTag) {
 	// 	handlecreateNote()
 	// });
 
-	$('#cancel').on("click", function () {
-		handlecreateNote()
+	$("#cancel").on("click", function () {
+		handlecreateNote();
 	});
 
 	$("#create").on("click", function () {

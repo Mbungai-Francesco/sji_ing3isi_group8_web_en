@@ -7,10 +7,10 @@
   .notes
     height: fit-content
     direction: ltr
-  &.reverse
-    // direction: rtl
-    .notes
-      direction: ltr
+  // &.reverse
+  //   // direction: rtl
+  //   .notes
+  //     direction: ltr
 .block_mainBody
   display: flex
   flex-direction: column
@@ -18,9 +18,10 @@
   overflow-y: scroll
   .notes
     width: 100%
-  &.reverse
-    justify-content: flex-end
-    flex-direction: column-reverse
+  // &.reverse
+  //   flex-direction: column-reverse
+  //   overflow-y: scroll
+  //   scroll-behavior: smooth
 .choosing
   overflow: unset !important
   #select
@@ -284,6 +285,21 @@
         // background-color: red
         font-size: 1em
   #createBtn
+    @extend %popFormsbtns
+
+#createTagForm
+  @extend %popForms
+  // display: block
+  input[type = text]
+    padding-inline: .5em
+    margin-block: 0 0.5em
+  #colorPicker
+    display: flex
+    // justify-content: space-between
+    p
+      text-align: left
+      margin-right: 1em
+  #createTagBtn
     @extend %popFormsbtns
 
 #rename

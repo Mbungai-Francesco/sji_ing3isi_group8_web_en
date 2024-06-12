@@ -83,7 +83,10 @@ const onStartUp = function () {
 					// 	resolve(appNotes)
 					// }
 				});
-				promise.then((result) => console.log(result));
+				promise.then((result) => {
+					console.log(result)
+					getAllTags();
+				});
 				// console.table(appNotes);
 				// return notes
 			};
@@ -122,7 +125,10 @@ const onStartUp = function () {
 					// 	resolve(appNotes)
 					// }
 				});
-				promise.then((result) => theNotes(appNotes, appTags));
+				promise.then((result) => {
+					console.log(result);
+					theNotes(appNotes, appTags)
+				});
 				// console.log(appTags);
 				// return tags
 			};
@@ -140,7 +146,6 @@ const onStartUp = function () {
 
 		// addNote(Notes);
 		getAllNotes();
-		getAllTags();
 		storeNote = function (param) {
 			console.log('am in storeNote');
 			addNote(param);

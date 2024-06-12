@@ -1,0 +1,121 @@
+#createNoteForm .selectedTags .tag {
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border-radius: 50%;
+  margin-inline: 0 0.5em;
+}
+#createNoteForm .selectedTags .tag:nth-child(2) {
+  background-color: green;
+}
+#createNoteForm .selectedTags .tag:nth-child(3) {
+  background-color: yellow;
+}
+
+#createNoteForm {
+  top: 35%;
+  left: 38%;
+  position: absolute;
+  text-align: center;
+  width: 25em;
+  background-color: var(--white);
+  padding: 2em 1.5em;
+  border-radius: 10px;
+  z-index: 4;
+  box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
+  display: none;
+}
+.active#createNoteForm {
+  display: block;
+}
+#createNoteForm p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+#createNoteForm input[type=text], #createNoteForm textarea, #createNoteForm .tags {
+  width: 100%;
+  margin-block: 0 1.3em;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.8em;
+  padding-inline: 1.6em;
+  font-size: 1em;
+}
+
+#createNoteForm #createBtn {
+  display: flex;
+  justify-content: space-between;
+}
+#createNoteForm #createBtn button {
+  padding-block: 0.8em;
+  padding-inline: 2.5em;
+  border-radius: 5px;
+  color: var(--black);
+  font-weight: 400;
+  font-size: 1.1em;
+}
+#createNoteForm #createBtn button:nth-child(1) {
+  background-color: var(--grey_hover);
+  border: 1px solid var(--text_grey);
+}
+#createNoteForm #createBtn button:nth-child(2) {
+  background-color: var(--orange);
+  border: 0;
+}
+
+#createNoteForm input[type=text] {
+  padding-inline: 0.5em;
+  margin-block: 0 0.5em;
+}
+#createNoteForm textarea {
+  width: 100%;
+  margin-block: 0 0.3em;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  font-size: 1em;
+  resize: none;
+}
+#createNoteForm .selectedTags {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-block: 0 0.5em;
+}
+#createNoteForm .selectedTags p {
+  margin: unset;
+}
+#createNoteForm .selectedTags .tag {
+  align-self: center;
+  margin-inline: 0.5em;
+}
+#createNoteForm .forTags {
+  text-align: left;
+  margin-block: 0 0.5em;
+}
+#createNoteForm .forTags .tags {
+  width: 100%;
+  padding-block: 0.5em;
+  padding-inline: 0.5em;
+  font-size: 1em;
+  margin-block: 0.5em;
+}
+#createNoteForm .forTags .tags option {
+  font-size: 1em;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: none;
+}
+#overlay.active {
+  display: block;
+}
+
+/*# sourceMappingURL=settingsSass.css.map */

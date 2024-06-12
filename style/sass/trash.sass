@@ -1,0 +1,106 @@
+@use 'notes'
+
+%tag
+  width: 1em
+  height: 1em
+  background-color: red
+  border-radius: 50%
+  margin-inline: 0 .5em
+  &.tag:nth-child(2)
+    background-color: green
+  &.tag:nth-child(3)
+    background-color: yellow
+
+%popForms
+  top: 35%
+  left: 38%
+  position: absolute
+  text-align: center
+  width: 25em
+  background-color: var(--white)
+  padding: 2em 1.5em
+  border-radius: 10px
+  z-index: 4
+  box-shadow: 0px 0px 10px #4b4b4b3f
+  display: none
+  &.active
+    display: block
+  p
+    font-size: 1.2em
+    margin-bottom: 1em
+  input[type = text], textarea, .tags
+    width: 100%
+    margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .8em
+    padding-inline: 1.6em
+    font-size: 1em
+
+%popFormsbtns
+  display: flex
+  justify-content: space-between
+  button
+    padding-block: .8em
+    padding-inline: 2.5em
+    border-radius: 5px
+    color: var(--black)
+    font-weight: 400
+    font-size: 1.1em
+  button:nth-child(1)
+    background-color: var(--grey_hover)
+    border: 1px solid var(--text_grey)
+  button:nth-child(2)
+    background-color: var(--orange)
+    border: 0
+
+%searchers
+  padding: .8em
+  padding-inline: 1em
+  width: 100%
+  background-color: var(--white2)
+  border-radius: 5px
+  font-size: .9em
+  font-weight: 400
+  border: 0
+
+// #createNoteForm
+//   @extend %popForms
+//   // display: block
+//   input[type = text]
+//     padding-inline: .5em
+//     margin-block: 0 0.5em
+//   textarea
+//     width: 100%
+//     margin-block: 0 0.3em
+//     border: 1px solid var(--text_grey)
+//     border-radius: 5px
+//     padding-block: .5em
+//     padding-inline: .5em
+//     font-size: 1em
+//     resize: none
+//   .selectedTags
+//     display: flex
+//     align-content: center
+//     flex-wrap: wrap
+//     margin-block: 0 .5em
+//     p
+//       margin: unset
+//     .tag
+//       @extend %tag
+//       align-self: center
+//       margin-inline: .5em
+//   .forTags
+//     text-align: left
+//     margin-block: 0 .5em
+//     .tags
+//       width: 100%
+//       padding-block: .5em
+//       padding-inline: .5em
+//       font-size: 1em
+//       margin-block: .5em
+//       option
+//         // background-color: red
+//         font-size: 1em
+//   #createBtn
+//     @extend %popFormsbtns

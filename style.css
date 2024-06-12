@@ -59,7 +59,7 @@ body{
   background-color: black;
   border-radius: 5px;
 }
-#pages .page, #profile{
+#pages .page, #profile, #createTag{
   display: flex;
   padding: .7em .8em;
   margin-block: 0 1em;
@@ -68,10 +68,10 @@ body{
   border-radius: 5px;
   /* font-size: 1.1em; */
 }
-#pages .page:hover{
+#pages .page:hover , #createTag:hover{
   background-color: var(--white_hover);
 }
-#pages .page svg{
+#pages .page svg, #createTag svg{
   margin-inline: 0 1em;
   width: 1.2em;
 }
@@ -115,6 +115,9 @@ body{
 }
 #tagsKey .tags .key:nth-child(3) .tag{
   background-color: yellow;
+}
+#createTag svg{
+
 }
 #profile{
   background-color: var(--white_hover);
