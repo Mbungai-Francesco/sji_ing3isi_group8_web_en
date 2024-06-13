@@ -29,6 +29,61 @@
   --black_hover: #898989
   --grey_hover: #ececec
   --white_hover: #EAEAEA
+
+%tag
+  width: 1em
+  height: 1em
+  background-color: red
+  border-radius: 50%
+  margin-inline: 0 .5em
+  &.tag:nth-child(2)
+    background-color: green
+  &.tag:nth-child(3)
+    background-color: yellow
+
+%popForms
+  top: 35%
+  left: 38%
+  position: absolute
+  text-align: center
+  width: 25em
+  background-color: var(--white)
+  padding: 2em 1.5em
+  border-radius: 10px
+  z-index: 4
+  box-shadow: 0px 0px 10px #4b4b4b3f
+  display: none
+  &.active
+    display: block
+  p
+    font-size: 1.2em
+    margin-bottom: 1em
+  input[type = text], textarea, .tags
+    width: 100%
+    margin-block: 0 1.3em
+    border: 1px solid var(--text_grey)
+    border-radius: 5px
+    padding-block: .8em
+    padding-inline: 1.6em
+    font-size: 1em
+
+%popFormsbtns
+  display: flex
+  justify-content: space-between
+  button
+    padding-block: .8em
+    padding-inline: 2.5em
+    border-radius: 5px
+    color: var(--black)
+    font-weight: 400
+    font-size: 1.1em
+  button:nth-child(1)
+    background-color: var(--grey_hover)
+    border: 1px solid var(--text_grey)
+  button:nth-child(2)
+    background-color: var(--orange)
+    border: 0
+
 a
   text-decoration: none
   color: unset
@@ -88,5 +143,21 @@ main
       transition: .5s ease
     input:hover
       bottom: 0px
+#logOutForm
+  @extend %popForms
+  #logOutBtns
+    @extend %popFormsbtns
+
+#overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background-color: rgba(0, 0, 0, 0.5)
+  z-index: 3
+  display: none
+  &.active
+    display: block
 
       

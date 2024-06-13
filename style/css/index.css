@@ -21,6 +21,57 @@
   --white_hover: #EAEAEA;
 }
 
+#logOutForm {
+  top: 35%;
+  left: 38%;
+  position: absolute;
+  text-align: center;
+  width: 25em;
+  background-color: var(--white);
+  padding: 2em 1.5em;
+  border-radius: 10px;
+  z-index: 4;
+  box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
+  display: none;
+}
+.active#logOutForm {
+  display: block;
+}
+#logOutForm p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+#logOutForm input[type=text], #logOutForm textarea, #logOutForm .tags {
+  width: 100%;
+  margin-block: 0 1.3em;
+  border: 1px solid var(--text_grey);
+  border-radius: 5px;
+  padding-block: 0.8em;
+  padding-inline: 1.6em;
+  font-size: 1em;
+}
+
+#logOutForm #logOutBtns {
+  display: flex;
+  justify-content: space-between;
+}
+#logOutForm #logOutBtns button {
+  padding-block: 0.8em;
+  padding-inline: 2.5em;
+  border-radius: 5px;
+  color: var(--black);
+  font-weight: 400;
+  font-size: 1.1em;
+}
+#logOutForm #logOutBtns button:nth-child(1) {
+  background-color: var(--grey_hover);
+  border: 1px solid var(--text_grey);
+}
+#logOutForm #logOutBtns button:nth-child(2) {
+  background-color: var(--orange);
+  border: 0;
+}
+
 a {
   text-decoration: none;
   color: unset;
@@ -114,6 +165,20 @@ main .create input:hover {
 }
 main .create input:hover {
   bottom: 0px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: none;
+}
+#overlay.active {
+  display: block;
 }
 
 /*# sourceMappingURL=index.css.map */

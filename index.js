@@ -3,6 +3,7 @@ const body = $("body");
 const createTag = $("#createTag");
 const createTagForm = $("#createTagForm");
 const colorMenu = $('.dropbtn')
+$('#profile .profile_name').text(currentUser.username)
 
 $('#sideBar-header svg').on('click', function() {
 	window.location.href = "../index.html";
