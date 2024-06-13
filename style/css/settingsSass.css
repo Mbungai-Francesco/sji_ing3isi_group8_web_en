@@ -12,7 +12,7 @@
   background-color: yellow;
 }
 
-#createTagForm, #createNoteForm {
+#logOutFormSet, #deleteFormSet, #createTagForm, #createNoteForm {
   top: 35%;
   left: 38%;
   position: absolute;
@@ -25,14 +25,14 @@
   box-shadow: 0px 0px 10px rgba(75, 75, 75, 0.2470588235);
   display: none;
 }
-.active#createTagForm, .active#createNoteForm {
+.active#logOutFormSet, .active#deleteFormSet, .active#createTagForm, .active#createNoteForm {
   display: block;
 }
-#createTagForm p, #createNoteForm p {
+#logOutFormSet p, #deleteFormSet p, #createTagForm p, #createNoteForm p {
   font-size: 1.2em;
   margin-bottom: 1em;
 }
-#createTagForm input[type=text], #createNoteForm input[type=text], #createTagForm textarea, #createNoteForm textarea, #createTagForm .tags, #createNoteForm .tags {
+#logOutFormSet input[type=text], #deleteFormSet input[type=text], #createTagForm input[type=text], #createNoteForm input[type=text], #logOutFormSet textarea, #deleteFormSet textarea, #createTagForm textarea, #createNoteForm textarea, #logOutFormSet .tags, #deleteFormSet .tags, #createTagForm .tags, #createNoteForm .tags {
   width: 100%;
   margin-block: 0 1.3em;
   border: 1px solid var(--text_grey);
@@ -42,11 +42,11 @@
   font-size: 1em;
 }
 
-#createTagForm #createTagBtn, #createNoteForm #createBtn {
+#logOutFormSet #logOutBtnsSet, #logOutFormSet #deleteBtnsSet, #deleteFormSet #logOutBtnsSet, #deleteFormSet #deleteBtnsSet, #createTagForm #createTagBtn, #createNoteForm #createBtn {
   display: flex;
   justify-content: space-between;
 }
-#createTagForm #createTagBtn button, #createNoteForm #createBtn button {
+#logOutFormSet #logOutBtnsSet button, #logOutFormSet #deleteBtnsSet button, #deleteFormSet #logOutBtnsSet button, #deleteFormSet #deleteBtnsSet button, #createTagForm #createTagBtn button, #createNoteForm #createBtn button {
   padding-block: 0.8em;
   padding-inline: 2.5em;
   border-radius: 5px;
@@ -54,11 +54,11 @@
   font-weight: 400;
   font-size: 1.1em;
 }
-#createTagForm #createTagBtn button:nth-child(1), #createNoteForm #createBtn button:nth-child(1) {
+#logOutFormSet #logOutBtnsSet button:nth-child(1), #logOutFormSet #deleteBtnsSet button:nth-child(1), #deleteFormSet #logOutBtnsSet button:nth-child(1), #deleteFormSet #deleteBtnsSet button:nth-child(1), #createTagForm #createTagBtn button:nth-child(1), #createNoteForm #createBtn button:nth-child(1) {
   background-color: var(--grey_hover);
   border: 1px solid var(--text_grey);
 }
-#createTagForm #createTagBtn button:nth-child(2), #createNoteForm #createBtn button:nth-child(2) {
+#logOutFormSet #logOutBtnsSet button:nth-child(2), #logOutFormSet #deleteBtnsSet button:nth-child(2), #deleteFormSet #logOutBtnsSet button:nth-child(2), #deleteFormSet #deleteBtnsSet button:nth-child(2), #createTagForm #createTagBtn button:nth-child(2), #createNoteForm #createBtn button:nth-child(2) {
   background-color: var(--orange);
   border: 0;
 }

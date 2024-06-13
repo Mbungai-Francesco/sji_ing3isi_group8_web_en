@@ -74,33 +74,52 @@ bubbles.forEach(bubble => {
   }, 150);
 });
 
-// Animate bubbles
-// let bubbles = document.querySelectorAll('.bubble');
-// bubbles.forEach(bubble => {
-//   let x = randomInRange(0, window.innerWidth);
-//   let y = randomInRange(0, window.innerHeight);
-//   let size = randomInRange(10, 50);
-//   bubble.style.width = `${size}px`;
-//   bubble.style.height = `${size}px`;
-//   bubble.style.left = `${x}px`;
-//   bubble.style.top = `${y}px`;
+$('#btn2').on('click', function () {
+  $('#logOutFormSet').toggle('active')
+  $('#overlay').toggle('active')
+  $('#logOutFormSet p span').text(currentUser.username)
+})
 
-//   // Animate the bubble
-//   function moveBubble() {
-//     x += randomInRange(-5, 5);
-//     y += randomInRange(-5, 5);
+$('#logCreateSet').on('click', function () {
+  loged = 'false'
+  loged = JSON.stringify(loged);
+  localStorage.setItem('loged', loged);
+  window.location.href = '../index.html'
+})
 
-//     // Check boundaries
-//     if (x < 0) x = 0;
-//     if (x > window.innerWidth) x = window.innerWidth;
-//     if (y < 0) y = 0;
-//     if (y > window.innerHeight) y = window.innerHeight;
+$('#logCancelSet').on('click', function () {
+  $('#logOutFormSet').toggle('active')
+  $('#overlay').toggle('active')
+})
 
-//     bubble.style.left = `${x}px`;
-//     bubble.style.top = `${y}px`;
+$('#btn1').on('click', function(){
+	$('#deleteFormSet').toggle('active')
+  $('#overlay').toggle('active')
+	$('#deleteFormSet p span').text(currentUser.username)
+})
 
-//     requestAnimationFrame(moveBubble);
-//   }
+$('#delCancelSet').on('click', function () {
+  $('#deleteFormSet').toggle('active')
+  $('#overlay').toggle('active')
+})
 
-//   moveBubble();
-// });
+$('#delCreateSet').on('click', function () {
+	inUsers = localStorage.getItem('users');
+	console.log(inUsers);
+	inUsers = JSON.parse(inUsers);
+	console.log(inUsers);
+	console.log(currentUser);
+	for (const u of inUsers) {
+		if (u.username == currentUser.username && (u.email == currentUser.email) && (u.password == currentUser.password)) {
+			ind = inUsers.indexOf(u)
+		}
+	}
+	console.log(ind);
+	inUsers.splice(ind, 1)
+	inUsers = JSON.stringify(inUsers);
+	localStorage.setItem('users', inUsers);
+	loged = 'false'
+  loged = JSON.stringify(loged);
+  localStorage.setItem('loged', loged);
+  window.location.href = '../index.html'
+})
