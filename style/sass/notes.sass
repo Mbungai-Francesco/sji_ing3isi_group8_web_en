@@ -91,6 +91,17 @@
   font-weight: 400
   border: 0
 
+%scrolls
+  &::-webkit-scrollbar
+    width: 0.5em
+  &::-webkit-scrollbar-track
+    background: var(--white2)
+    border-radius: 20px
+    padding-inline: 1em
+  &::-webkit-scrollbar-thumb
+    background: linear-gradient(to bottom,var(--clear_orange),var(--orange))
+    border-radius: 20px
+
 .hidden
   display: none
 
@@ -120,7 +131,7 @@
     display: flex
     align-items: center
     justify-content: space-between
-    #filter
+    #filter,#filterTag
       position: relative
       background-color: var(--white2)
       width: 6em
@@ -129,6 +140,7 @@
       padding-right: 5em
       display: flex
       cursor: pointer
+      margin-right: 1em 
       // overflow: unset
       svg
         position: absolute
@@ -137,6 +149,7 @@
         align-self: center
       #select
         @extend %searchers
+        @extend %scrolls
         width: fit-content
         height: 10em
         padding-block: unset
@@ -147,12 +160,18 @@
         // top: -3em
         .options
           // border: 1px solid red
+          display: flex
+          justify-content: space-between
           font-size: 1em
           font-weight: 400
           padding-block: .5em
           padding-inline: .5em
           &:hover
             background-color: var(--grey_hover)
+          .tagCol
+            width: 1em
+            height: 1em
+            border-radius: 50%
     #svgs
       margin-inline: 1em 0
       svg

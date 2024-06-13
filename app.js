@@ -5,6 +5,7 @@ var storeNote;
 var getNote_id;
 var deleteNote;
 var updateNote;
+var updateNoteDescription;
 var storeTag;
 var deleteTag;
 var updateTag;
@@ -188,6 +189,9 @@ const onStartUp = function () {
 					addNote(element);
 				}
 			});
+		};
+		updateNoteDescription = function (note) {
+			addNote(note);
 		};
 		storeTag({ name: "Important", color: "red" });
 		storeTag({ name: "Casual", color: "green" });

@@ -3,6 +3,7 @@ if (!localStorage.getItem('currentBody')) {
 }
 var Notes = [];
 var categories = ""
+var tags = ""
 var tagSelect = "<option value=''>Choose tags</option>"
 var colorSelect = ""
 let catSet = new Set()
@@ -52,7 +53,7 @@ var newNote = function (id,title, date, time, tags,cats){
   var cat = ''
   for (const color of tags) {
     tag += newTag(color)
-    // tagSet.add(color)
+    tagSet.add(color)
   }
   // console.log(tagSet);
   for (const cate of cats) {
@@ -88,7 +89,7 @@ var newNote = function (id,title, date, time, tags,cats){
 }
 
 var newTag = function (col){
-  return `<div class="tag" style="background-color: ${col};" ></div>`
+  return `<div class="tag" style="background-color: ${col};" col="${col}"></div>`
 }
 
 var tagKeys = function (name,col){
@@ -103,7 +104,7 @@ var newCat = function (col,i){
 }
 
 var newTagSort = function (col,i){
-  return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
+  return `<div class="options" value="${col}" index="${i}"><p>${col}</p> <div class="tagCol" style="background-color: ${col};"></div></div>`
 }
 
 var newTagSelect = function (nom,col){

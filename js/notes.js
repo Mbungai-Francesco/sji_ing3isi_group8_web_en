@@ -17,12 +17,14 @@ const theNotes = function (Notes, arrTag, arrColor) {
 	var currentlyUpdating;
 	var createNote = $("#createNote");
 	var filter = $("#filter");
-	var categotyOptions = $(".options");
+	var filterTag = $("#filterTag");
+	var categotyOptions = $("#filter .options");
+	var filterTagOptions = $("#filterTag .options");
 	var tagOptions = $("#createNoteForm select");
 	var tagOptionstag = $("#createNoteForm .tags option");
 	var noteTitle = $("#createNoteForm input");
 	var newTags = $(".selectedTags");
-	var arr,
+	var arr, arrTagSet,
 		selectedTags = [[], "<p>Tags:</p>"];
 	console.log("am in 2");
 	var currentBody = localStorage.getItem("currentBody");
@@ -45,7 +47,9 @@ const theNotes = function (Notes, arrTag, arrColor) {
 		overlay = $("#overlay");
 		createNote = $("#createNote");
 		filter = $("#filter");
-		categotyOptions = $(".options");
+		filterTag = $("#filterTag");
+		categotyOptions = $("#filter .options");
+		filterTagOptions = $("#filterTag .options");
 		tagOptions = $("#createNoteForm select");
 		tagOptionstag = $("#createNoteForm .tags option");
 		noteTitle = $("#createNoteForm input");
@@ -127,6 +131,17 @@ const theNotes = function (Notes, arrTag, arrColor) {
 		filter.innerWidth(filter.children("#select").innerWidth() + 16);
 		filter.children("#select").innerWidth(filter.innerWidth());
 
+		console.log(tagSet);
+		arrTagSet = [...tagSet];
+		let j = 0;
+		for (const cate of arrTagSet) {
+			tags += newTagSort(cate, j);
+			j++;
+		}
+		filterTag.children("#select").append(tags);
+		filterTag.innerWidth(filterTag.children("#select").innerWidth() + 20);
+		filterTag.children("#select").innerWidth(filterTag.innerWidth());
+
 		// let j = 0
 		for (const cate of arrTag) {
 			tagSelect += newTagSelect(cate.name, cate.color);
@@ -206,6 +221,26 @@ const theNotes = function (Notes, arrTag, arrColor) {
 		});
 	}
 
+	function filterByTag(searchTerm) {
+		$("#mainBody .notes").each(function () {
+			var opts = $(this).children(".notesBottom").children(".details").children(".tags").children("div");
+			console.log(opts);
+			for (const opt of opts) {
+				console.log($(opt));
+				var text = $(opt).attr('col').toLowerCase();
+				console.log(text);
+				if (searchTerm == "all tags") {
+					$(this).show();
+					return;
+				} else if (text.includes(searchTerm)) {
+					$(this).show();
+					return;
+				}
+			}
+			$(this).hide();
+		});
+	}
+
 	var noteOptionOnSite = function () {
 		for (const iterator of notes_opt) {
 			if (iterator.classList.contains("hidden")) continue;
@@ -245,6 +280,37 @@ const theNotes = function (Notes, arrTag, arrColor) {
 
 	clickOnNote();
 
+	const clickOnTag = function () {
+		filterTagOptions.on("click", function () {
+			// console.log("am in");
+			// console.log($(this).attr('index'));
+			let temp = arrTagSet[$(this).attr("index")];
+			arrTagSet[$(this).attr("index")] = arrTagSet[0];
+			arrTagSet[0] = temp;
+
+			// console.log(arr);
+
+			let i = 0;
+			tags = "";
+			for (const cate of arrTagSet) {
+				tags += newTagSort(cate, i);
+				i++;
+			}
+			console.log($(this).children("p").text().toLowerCase());
+			var searchTerm = $(this).children("p").text().toLowerCase();
+			filterByTag(searchTerm);
+			// console.log($(this));
+			filterTag.children("#select").children(".options").remove();
+			filterTag.children("#select").append(tags);
+
+			filterTagOptions = $(".options");
+			// console.log(categotyOptions);
+			clickOnTag();
+		});
+	};
+
+	clickOnTag();
+
 	const assignTags = function (array, col) {
 		var there = array.filter((element) => element == col);
 		// console.log(there);
@@ -275,6 +341,12 @@ const theNotes = function (Notes, arrTag, arrColor) {
 	});
 
 	filter.on("click", function () {
+		// console.log($(this).children('#select').children('.options'));
+		// console.log(`categories: ${categories}`);
+		$(this).toggleClass("choosing");
+	});
+
+	filterTag.on("click", function () {
 		// console.log($(this).children('#select').children('.options'));
 		// console.log(`categories: ${categories}`);
 		$(this).toggleClass("choosing");
@@ -396,10 +468,35 @@ const theNotes = function (Notes, arrTag, arrColor) {
 		handleCreateTag();
 	})
 
-	$('#noteContent .back').on()
+	$('#noteContent .back').on('click', function () {
+		$('#noteContent').toggle('active');
+		$('#overlay').toggle('active');
+	})
 
-	$('.notes').on('click', function (){
-		console.log($(this).attr('val'));
-		console.log(getNote_id($(this).attr('val')));
+	$('.notes').on('click', function (e){
+		let clas = e.target.getAttribute("class")
+		console.log(clas);
+		if (clas.includes("dots") || clas.includes("dot")) return;
+		let val = $(this).attr('val')
+		console.log(val);
+		let note = Notes.find(note => note.id == val);
+		console.log(note);
+		$('#noteContent textarea').val('')
+		$('#noteContent textarea').val(note.description)
+		$('#noteContent textarea').attr('val', val)
+		$('#noteContent').toggle('active');
+		$('#overlay').toggle('active');
+	})
+
+	$('#noteContent .done').on('click', function () {
+		let val = $('#noteContent textarea').attr('val')
+		console.log(val);
+		let note = Notes.find(note => note.id == val);
+		console.log(note);
+		note.description = $('#noteContent textarea').val()
+		updateNoteDescription(note)
+		$('#noteContent').toggle('active');
+		$('#overlay').toggle('active');
+		console.log(note);
 	})
 };

@@ -42,6 +42,11 @@ body{
   padding-inline: 1em;
   padding-block: 1em;
   background-color: var(--white2);
+  position: relative;
+}
+#sideBarTop, #profile{
+  position: relative;
+  z-index: 2;
 }
 #sideBar-header{
   width: 100%;
@@ -119,6 +124,16 @@ body{
 #profile{
   background-color: var(--white_hover);
   justify-content: space-between;
+}
+.bubble{
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  background-color: var(--orange);
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 70%;
+  transition: top 0.05s, left 0.05s;
 }
 main{
   width: 82%;

@@ -43,3 +43,59 @@ colorMenu.on("click", function () {
 $('#tagCancel').on('click', function () {
 	bringTheForms("createTagForm");
 })
+
+// Function to generate a random number in a range
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// Animate bubbles
+let bubbles = document.querySelectorAll('.bubble');
+bubbles.forEach(bubble => {
+  let x = randomInRange(0, window.innerWidth)*(1/4);
+  let y = randomInRange(0, window.innerHeight);
+  let size = randomInRange(10, 50);
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${x}px`;
+  bubble.style.top = `${y}px`;
+
+  // Animate the bubble
+  setInterval(() => {
+    bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${x}px`;
+  bubble.style.top = `${y}px`;
+  }, 150);
+});
+
+// Animate bubbles
+// let bubbles = document.querySelectorAll('.bubble');
+// bubbles.forEach(bubble => {
+//   let x = randomInRange(0, window.innerWidth);
+//   let y = randomInRange(0, window.innerHeight);
+//   let size = randomInRange(10, 50);
+//   bubble.style.width = `${size}px`;
+//   bubble.style.height = `${size}px`;
+//   bubble.style.left = `${x}px`;
+//   bubble.style.top = `${y}px`;
+
+//   // Animate the bubble
+//   function moveBubble() {
+//     x += randomInRange(-5, 5);
+//     y += randomInRange(-5, 5);
+
+//     // Check boundaries
+//     if (x < 0) x = 0;
+//     if (x > window.innerWidth) x = window.innerWidth;
+//     if (y < 0) y = 0;
+//     if (y > window.innerHeight) y = window.innerHeight;
+
+//     bubble.style.left = `${x}px`;
+//     bubble.style.top = `${y}px`;
+
+//     requestAnimationFrame(moveBubble);
+//   }
+
+//   moveBubble();
+// });
