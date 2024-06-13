@@ -4,6 +4,10 @@ const createTag = $("#createTag");
 const createTagForm = $("#createTagForm");
 const colorMenu = $('.dropbtn')
 
+$('#sideBar-header svg').on('click', function() {
+	window.location.href = "../index.html";
+})
+
 const bringTheForms = (form) => {
 	$("#overlay").toggle("active");
 	$(`#${form}`).toggle("active");
