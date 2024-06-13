@@ -1,6 +1,5 @@
-const submit = $("#logInSubmit");
+const logSubmit = $("#logInSubmit");
 var user = {username: "", email: "", password: "", id : ""};
-var currentUser = ''
 
 function claim() {
 	inputs = document.querySelectorAll("input");
@@ -42,7 +41,7 @@ $("input").on("input", function () {
 	}
 });
 
-submit.on("click", function () {
+logSubmit.on("click", function () {
 	if (claim()){
     console.log("well entered")
     console.log(user);
@@ -53,7 +52,11 @@ submit.on("click", function () {
     for (const u of users) {
       if (u.username == user.username && (u.email == user.email) && (u.password == user.password)) {
         found = true;
-        currentUser = u
+        currentUser = localStorage.getItem('currentUser');
+        currentUser = JSON.parse(currentUser);
+        currentUser = u;
+        currentUser = JSON.stringify(currentUser);
+        localStorage.setItem('currentUser', currentUser);
         break;
       }
     }
@@ -66,7 +69,7 @@ submit.on("click", function () {
       loged = "true"
       loged = JSON.stringify(loged);
       localStorage.setItem('loged', loged);
-      alert("Welcome");
+      alert(`Welcome ${user.username}`);
       window.location.href = "../index.html";
     }
   }

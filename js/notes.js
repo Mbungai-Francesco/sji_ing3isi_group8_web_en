@@ -74,6 +74,7 @@ const theNotes = function (Notes, arrTag, arrColor) {
 				description: "",
 				tags: selectedTags[0],
 				category: [""],
+				userId : ""
 			};
 			storeNote(note);
 			console.log(note);
@@ -91,6 +92,8 @@ const theNotes = function (Notes, arrTag, arrColor) {
 			let tag = {
 				name: tagT.val(),
 				color: tagCol.val().toLowerCase(),
+				userId: '',
+				default:false
 			};
 			storeTag(tag);
 			console.log(tag);

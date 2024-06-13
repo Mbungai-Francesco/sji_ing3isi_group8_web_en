@@ -4,26 +4,32 @@ const indexBtnA = $('header .right a')
 if (!localStorage.getItem('users')) {
   localStorage.setItem('users', '');
   localStorage.setItem('loged', JSON.stringify('false'));
+  localStorage.setItem('currentUser', JSON.stringify({username: "", email: "", password: "", id : ""}));
 }
+// $('#profile .profile_name').text(currentUser.username)
 let users = localStorage.getItem('users');
 let loged = localStorage.getItem('loged');
+let currentUser = localStorage.getItem('currentUser');
+currentUser = JSON.parse(currentUser);
 loged = JSON.parse(loged);
 if (loged == 'false') {
   console.log(users.length);
   console.log(userName.text());
   userName.text('Guest')
-  indexBtn.val('Sign Up')
+  // indexBtn.val('Sign Up')
+  indexBtn.val('Log in')
 }
 else{
   users = JSON.parse(users);
-  currentUser = users[users.length - 1]
+  // currentUser = users[users.length - 1]
   userName.text(currentUser.username)
   indexBtn.val('Log Out')
 }
 
 indexBtnA.on('click', function () {
   if (loged == 'false') {
-    window.location.href = './html/signUp.html'
+    // window.location.href = './html/signUp.html'
+    window.location.href = './html/logIn.html'
   }
   else {
     $('#logOutForm').toggle('active')

@@ -50,6 +50,11 @@ $("input").on("input", function () {
 	}
 });
 const addUser = function (users){
+  currentUser = localStorage.getItem('currentUser');
+  currentUser = JSON.parse(currentUser);
+  currentUser = user;
+  currentUser = JSON.stringify(currentUser);
+  localStorage.setItem('currentUser', currentUser);
   loged = JSON.parse(localStorage.getItem('loged'));
   loged = "true"
   loged = JSON.stringify(loged);

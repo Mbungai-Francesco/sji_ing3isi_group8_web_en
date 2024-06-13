@@ -23,6 +23,7 @@ request.onupgradeneeded = function (event) {
 	objectStore.createIndex("description", "description", { unique: false });
 	objectStore.createIndex("tags", "tags", { unique: false });
 	objectStore.createIndex("category", "category", { unique: false });
+	objectStore.createIndex("userId", "userId", { unique: false });
 
 	const dbTags = event.target.result;
 	const objectStoreTags = dbTags.createObjectStore("tags", {
@@ -31,6 +32,8 @@ request.onupgradeneeded = function (event) {
 	});
 	objectStoreTags.createIndex("name", "name", { unique: true });
 	objectStoreTags.createIndex("color", "color", { unique: true });
+	objectStoreTags.createIndex("userId", "userId", { unique: false });
+	objectStoreTags.createIndex("default", "default", { unique: false });
 };
 
 // Handle successful database connection
@@ -46,6 +49,7 @@ const onStartUp = function () {
 		function addNote(note) {
 			const noteTransaction = db.transaction(["notes"], "readwrite");
 			const notesStore = noteTransaction.objectStore("notes");
+			note.userId = currentUser.id;
 			const request = notesStore.put(note);
 
 			request.onsuccess = function (event) {
@@ -94,8 +98,15 @@ const onStartUp = function () {
 
 			request.onsuccess = function (event) {
 				const notes = event.target.result;
+				var userNotes = []
+				for (const iterator of notes) {
+					if(iterator.userId == currentUser.id){
+						userNotes.push(iterator)
+					}
+				}
+				if(userNotes.length != 0) appNotes = sortNotes(userNotes, "date");
+				else appNotes = userNotes
 				// console.table(notes);
-				appNotes = sortNotes(notes, "date");
 				// console.log(appNotes);
 				let promise = new Promise(function (resolve, reject) {
 					resolve(appNotes);
@@ -119,6 +130,8 @@ const onStartUp = function () {
 		function addTags(tag) {
 			const tagTransaction = db.transaction(["tags"], "readwrite");
 			const tagStore = tagTransaction.objectStore("tags");
+			console.log(currentUser.id);
+			tag.userId = currentUser.id;
 			const request = tagStore.add(tag);
 
 			request.onsuccess = function (event) {
@@ -138,7 +151,13 @@ const onStartUp = function () {
 			request.onsuccess = function (event) {
 				const tags = event.target.result;
 				// console.table(tags);
-				appTags = tags;
+				var userTags = []
+				for (const iterator of tags) {
+					if(iterator.userId == currentUser.id || iterator.default){
+						userTags.push(iterator)
+					}
+				}
+				appTags = userTags;
 				let promise = new Promise(function (resolve, reject) {
 					resolve(appTags);
 					// if (appTags.length>0 && appNotes.length>0) {
@@ -193,9 +212,9 @@ const onStartUp = function () {
 		updateNoteDescription = function (note) {
 			addNote(note);
 		};
-		storeTag({ name: "Important", color: "red" });
-		storeTag({ name: "Casual", color: "green" });
-		storeTag({ name: "Daily", color: "yellow" });
+		storeTag({ name: "Important", color: "red" , userId:'', default:true});
+		storeTag({ name: "Casual", color: "green" ,userId:'', default:true});
+		storeTag({ name: "Daily", color: "yellow" ,userId:'', default:true});
 		getAllNotes();
 
 		// theNotes(appNotes, appTags);

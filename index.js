@@ -3,7 +3,8 @@ const body = $("body");
 const createTag = $("#createTag");
 const createTagForm = $("#createTagForm");
 const colorMenu = $('.dropbtn')
-$('#profile .profile_name').text(currentUser.username)
+$('.profile_name').text(currentUser.username)
+// $('header .profile_name').text(currentUser.username)
 
 $('#sideBar-header svg').on('click', function() {
 	window.location.href = "../index.html";
@@ -122,4 +123,8 @@ $('#delCreateSet').on('click', function () {
   loged = JSON.stringify(loged);
   localStorage.setItem('loged', loged);
   window.location.href = '../index.html'
+})
+
+$('#sideBar-header h1').on('click', function(){
+	window.location.href = './notes.html'
 })
