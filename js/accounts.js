@@ -1,7 +1,6 @@
 const userName = $('header p span')
 const indexBtn = $('header input')
 const indexBtnA = $('header .right a')
-var currentUser = ''
 if (!localStorage.getItem('users')) {
   localStorage.setItem('users', '');
   localStorage.setItem('loged', JSON.stringify('false'));
@@ -27,11 +26,9 @@ indexBtnA.on('click', function () {
     window.location.href = './html/signUp.html'
   }
   else {
-    loged = 'false'
-    loged = JSON.stringify(loged);
-    localStorage.setItem('loged', loged);
-    logOutForm.addClass('active')
-    overlay.addClass('active')
+    $('#logOutForm').toggle('active')
+    $('#overlay').toggle('active')
+    $('#logOutForm p span').text(currentUser.username)
   }
 })
 
@@ -43,4 +40,16 @@ $('#toNotes').on('click', function () {
   else{
     window.location.href = './html/notes.html'
   }
+})
+
+$('#logCreate').on('click', function () {
+  loged = 'false'
+  loged = JSON.stringify(loged);
+  localStorage.setItem('loged', loged);
+  window.location.href = '../index.html'
+})
+
+$('#logCancel').on('click', function () {
+  $('#logOutForm').toggle('active')
+  $('#overlay').toggle('active')
 })
