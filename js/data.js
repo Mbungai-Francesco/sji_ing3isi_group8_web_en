@@ -103,8 +103,15 @@ var newCat = function (col,i){
   return `<div class="options" value="${col}" index="${i}"><p>${col}</p></div>`
 }
 
-var newTagSort = function (col,i){
-  return `<div class="options" value="${col}" index="${i}"><p>${col}</p> <div class="tagCol" style="background-color: ${col};"></div></div>`
+var newTagSort = function (col,i,allTags){
+  let name = col
+  for (const iterator of allTags) {
+    if(iterator.color == col){
+      name = iterator.name
+      break;
+    }
+  }
+  return `<div class="options" value="${col}" index="${i}"><div class="tagCol" style="background-color: ${col};"></div> <p>${name}</p></div>`
 }
 
 var newTagSelect = function (nom,col){

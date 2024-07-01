@@ -172,6 +172,7 @@
   width: fit-content;
   height: 10em;
   padding-block: unset;
+  padding-inline: unset;
   cursor: pointer;
   position: absolute;
   z-index: 2;
@@ -179,7 +180,7 @@
 }
 #mainTop #mainTop_right #filter #select .options, #mainTop #mainTop_right #filterTag #select .options {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   font-size: 1em;
   font-weight: 400;
   padding-block: 0.5em;
@@ -192,6 +193,10 @@
   width: 1em;
   height: 1em;
   border-radius: 50%;
+  margin-right: 0.5em;
+}
+#mainTop #mainTop_right #filter #select .options .tagCol + p, #mainTop #mainTop_right #filterTag #select .options .tagCol + p {
+  text-transform: capitalize;
 }
 #mainTop #mainTop_right #svgs {
   margin-inline: 1em 0;

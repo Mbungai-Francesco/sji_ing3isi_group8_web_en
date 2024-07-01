@@ -138,7 +138,7 @@ const theNotes = function (Notes, arrTag, arrColor) {
 		arrTagSet = [...tagSet];
 		let j = 0;
 		for (const cate of arrTagSet) {
-			tags += newTagSort(cate, j);
+			tags += newTagSort(cate, j, arrTag);
 			j++;
 		}
 		filterTag.children("#select").append(tags);
