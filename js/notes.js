@@ -2,7 +2,7 @@ const theNotes = function (Notes, arrTag, arrColor) {
 	while(!arrColor){
 		var a = setInterval(()=>{
 			theNotes(Notes, arrTag, arrColor)
-		}, 200)
+		}, 500)
 		clearInterval(a)
 	}
 	// console.log(Notes);
