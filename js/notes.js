@@ -1,4 +1,10 @@
 const theNotes = function (Notes, arrTag, arrColor) {
+	while(!arrColor){
+		var a = setInterval(()=>{
+			theNotes(Notes, arrTag, arrColor)
+		}, 200)
+		clearInterval(a)
+	}
 	// console.log(Notes);
 	var body = $("body");
 	var mainBody = $("#mainBody");
