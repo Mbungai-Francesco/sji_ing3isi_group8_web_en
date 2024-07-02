@@ -11,7 +11,7 @@ catSet.add('All')
 let tagSet = new Set()
 tagSet.add('All tags') 
 let arrTag
-let arrColor
+let arrColor = []
 let adminTags = ` <div class="key">
               <div class="tag" style="background-color: red;"></div>
               <p>Important</p>

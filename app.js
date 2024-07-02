@@ -265,3 +265,8 @@ onStartUp();
 // 		notesStore.delete(param);
 // 	};
 // };
+let getCol = new Promise(function(resolve, reject){
+	if(arrColor.length != 0){
+		resolve(arrColor)
+	}
+}).then((result) => { theNotes(appNotes, appTags, result)})
